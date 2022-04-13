@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --primary: #7bcdee;
+  --invert: #316a94;
+  --secondary: #9cbde6;
+  --white: #c5def6;
+  --accent: #ffac41;
+  --bw: #eff7fa;
+  --wb: #00001c;
+}
+
+[data-theme='dark'] {
+  --primary: #316a94;
+  --invert: #7bcdee;
+  --secondary: #9cbde6;
+  --white: #c5def6;
+  --accent: #ee8331;
+  --bw: #00001c;
+  --wb: #eff7fa;
+}
+
+.darkmode-toggle {
+  width: 3em;
+  height: 3em;
+  background-color: var(--invert);
+  border: 5px solid var(--accent);
+  border-radius: 100em;
+  color: var(--wb);
+  
+  &:hover {
+    background-color: var(--primary);
+    color: var(--bw);
+  }
+}
+
+.transition-250ms {
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 250ms !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.transition-500ms {
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 500ms !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
