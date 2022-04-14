@@ -1,0 +1,13 @@
+.darkmodeToggle {
+  width: 3em;
+  height: 3em;
+  background-color: var(--invert);
+  border: 5px solid var(--accent);
+  border-radius: 100em;
+  color: var(--wb);
+  
+  &:hover {
+    background-color: var(--primary);
+    color: var(--bw);
+  }
+}

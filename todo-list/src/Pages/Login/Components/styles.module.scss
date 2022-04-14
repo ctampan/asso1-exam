@@ -1,31 +1,14 @@
-.loginContainer {
-  width: 100%;
-  height: 100vh;
-  background-color: var(--primary);
-}
-
-.loginCard {
-  width: 30%;
-}
-
-.loginCardHeader {
-  background-color: var(--accent) !important;
-  color: var(--wb) !important;
-  font-weight: 800;
-  font-size: 1.5em;
-}
-
-.loginCardBody {
+.registerCardBody {
   background-color: var(--white);
   height: auto;
 }
 
-.loginPrefix {
+.registerPrefix {
   background-color: var(--invert)  !important;
   color: var(--bw)  !important;
 }
 
-.loginSuffix {
+.registerSuffix {
   background-color: var(--invert)  !important;
   color: var(--bw)  !important;
 
@@ -35,7 +18,7 @@
   }
 }
 
-.loginButton {
+.registerButton {
   background-color: var(--invert)  !important;
   border-color: var(--invert)  !important;
   color: var(--bw) !important;

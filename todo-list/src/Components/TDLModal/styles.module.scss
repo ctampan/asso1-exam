@@ -1,0 +1,19 @@
+.modalHeader {
+  background-color: var(--accent) !important;
+}
+
+.modalTitle {
+  color: var(--wb) !important;
+  font-weight: 700 !important;
+  font-size: 1.5em;
+}
+
+.modalBody {
+  background-color: var(--white);
+  height: auto;
+}
+
+.modalFooter {
+  background-color: var(--white);
+  height: auto;
+}

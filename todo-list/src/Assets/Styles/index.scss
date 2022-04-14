@@ -32,20 +32,6 @@ code {
   --wb: #eff7fa;
 }
 
-.darkmode-toggle {
-  width: 3em;
-  height: 3em;
-  background-color: var(--invert);
-  border: 5px solid var(--accent);
-  border-radius: 100em;
-  color: var(--wb);
-  
-  &:hover {
-    background-color: var(--primary);
-    color: var(--bw);
-  }
-}
-
 .transition-250ms {
   transition-property: all !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -58,4 +44,8 @@ code {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
   transition-duration: 500ms !important;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

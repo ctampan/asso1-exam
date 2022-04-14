@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import styles from "./styles.module.scss";
 import { FaEye, FaEyeSlash, FaKey, FaUser } from "react-icons/fa";
 import "animate.css";
-import { ICredentials } from "../../Middleware/Redux/Redux.interface";
 import {
   logInWithCredentials,
   updateError,
@@ -16,6 +15,9 @@ import {
   FormControl,
   InputGroup,
 } from "react-bootstrap";
+import { TDLModal } from "../../Components";
+import RegisterForm from "./Components";
+import { ICredentials } from "../../Interfaces/Credentials.interface";
 
 interface ICurrent {
   errorMessage: string;
@@ -33,15 +35,22 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
   const loginButtonRef = useRef<HTMLButtonElement | null>(null);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>();
 
   const triggerLoginButton = (e: any) => {
-    if (e.key === 'Enter' && loginButtonRef.current) {
+    if (e.key === "Enter" && loginButtonRef.current) {
       loginButtonRef.current.click();
     }
   };
 
+  const toggleShowModal = () => {
+    setShowRegisterModal(!showRegisterModal);
+  };
+
   return (
     <div className={`${styles.loginContainer}`}>
+      <title>Login | Todo List</title>
       <Container className="d-flex justify-content-center align-items-center h-100">
         <Card className={`${styles.loginCard}`}>
           <Card.Header
@@ -60,6 +69,18 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
                 dismissible
               >
                 {errorMessage}
+              </Alert>
+            )}
+            {successMessage && (
+              <Alert
+                variant="success"
+                show={!!successMessage}
+                onClose={() => {
+                  setSuccessMessage('');
+                }}
+                dismissible
+              >
+                {successMessage}
               </Alert>
             )}
             <InputGroup className="mb-3">
@@ -91,7 +112,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
                 onKeyDown={triggerLoginButton}
               />
               <InputGroup.Text
-                className={`${styles.loginSuffix} transition-250ms user-select-none`}
+                className={`${styles.loginSuffix} transition-250ms user-select-none cursor-pointer`}
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {!showPassword ? <FaEye /> : <FaEyeSlash />}
@@ -99,14 +120,26 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
             </InputGroup>
             <Button
               ref={loginButtonRef}
-              className={`${styles.loginButton} transition-250ms w-100`}
+              className={`${styles.loginButton} transition-250ms w-100 mb-2`}
               onClick={() => logInConnect({ username, password })}
             >
               Login
             </Button>
+            <Button
+              className={`${styles.registerButton} transition-250ms w-100`}
+              onClick={() => setShowRegisterModal(true)}
+            >
+              Register
+            </Button>
           </Card.Body>
         </Card>
       </Container>
+      <TDLModal
+        show={showRegisterModal}
+        toggleShow={toggleShowModal}
+        otherProps={{size: 'sm'}}
+        body={<RegisterForm toggleShowModal={toggleShowModal} setSuccessMessage={setSuccessMessage} />}
+      />
     </div>
   );
 }

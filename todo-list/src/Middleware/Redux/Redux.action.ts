@@ -1,8 +1,9 @@
 import { ThunkDispatch as Dispatch } from "redux-thunk";
+import { isCredentialValid } from "../../Hooks/useAuth";
+import { ICredentials } from "../../Interfaces/Credentials.interface";
 import { store } from "./Redux.config";
 
 import * as constants from "./Redux.constant";
-import { ICredentials } from "./Redux.interface";
 
 export interface IDefault {
   type: typeof constants.DEFAULT;
@@ -35,13 +36,13 @@ function unauthenticate(errorMessage?: string): IUnauthenticate {
 export type AuthenticationAction = IAuthenticate | IUnauthenticate;
 
 export function logInWithCredentials({ username, password }: ICredentials) {
-  if (username === "admin" && password === "123") {
+  if (isCredentialValid({ username, password })) {
     return async (dispatch: Dispatch<AuthenticationAction, {}, any>) => {
-      const dummyPayload: ICredentials = {
-        username: "admin",
-        password: "123",
+      const payload: ICredentials = {
+        username,
+        password,
       };
-      dispatch(authenticate(dummyPayload));
+      dispatch(authenticate(payload));
     };
   }
 
