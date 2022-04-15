@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Home, Login } from "../Pages";
 import ProtectedRoute from "./ProtectedRoute";
 import UnprotectedRoute from "./UnprotectedRoute";
@@ -26,6 +26,7 @@ export default function Pages({ isAuthenticated }: IProps) {
         }
         path="/"
       />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }

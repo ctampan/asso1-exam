@@ -16,13 +16,18 @@ type Props = ITodoList & IProps;
 const TDCollapse = ({ id, title, content, owner, refreshList }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [titleState, setTitleState] = useState(title);
   const [contentState, setContentState] = useState(content);
+
+  const [exeRef, setExeRef] = useState(true);
   const titleRef = useCallback((element: HTMLTextAreaElement | null) => {
-    if (element) {
+    if (element && exeRef) {
+      setExeRef(false);
       element.focus();
       element.setSelectionRange(element.value.length, element.value.length);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -71,7 +76,7 @@ const TDCollapse = ({ id, title, content, owner, refreshList }: Props) => {
           <FaTrash
             className={`${styles.deleteIcon} mt-3`}
             onClick={() => {
-              DeleteTodo(id);
+              DeleteTodo({ id, owner });
               refreshList();
             }}
           />
