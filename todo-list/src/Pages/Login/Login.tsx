@@ -52,10 +52,20 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
 
   const handleLogin = async () => {
     setIsLoginLoading(true);
-    updateError(undefined);
+    handleSetErrorMessage(undefined);
     await timeout(1000);
     logInConnect({ username, password });
     setIsLoginLoading(false);
+  };
+
+  const handleSetSuccessMessage = (message: string) => {
+    updateError(undefined);
+    setSuccessMessage(message);
+  };
+
+  const handleSetErrorMessage = (message?: string) => {
+    updateError(undefined);
+    setSuccessMessage("");
   };
 
   return (
@@ -150,10 +160,11 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
         show={showRegisterModal}
         toggleShow={toggleShowModal}
         otherProps={{ size: "sm" }}
+        header="Register"
         body={
           <RegisterForm
             toggleShowModal={toggleShowModal}
-            setSuccessMessage={setSuccessMessage}
+            setSuccessMessage={handleSetSuccessMessage}
           />
         }
       />

@@ -1,0 +1,120 @@
+.tdcTitle {
+  background-color: var(--invert);
+  border-radius: 10px;
+  border: 5px solid var(--accent);
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--bw);
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  &:hover {
+    background-color: var(--secondary);
+    color: var(--wb);
+  }
+}
+
+.tdcTitleInput {
+  background-color: transparent;
+  border-color: transparent;
+  max-height: 30vh;
+
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  direction: ltr;
+  scrollbar-color: #d4aa70 #e4e4e4;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: 7px solid transparent;
+    background-clip: content-box;
+    background-color: var(--bw);
+  }
+}
+
+.tdcContent {
+  width: 98% !important;
+  background-color: var(--secondary);
+  padding: 15px 1.25em 1.25em;
+  border-radius: 0 0 5px 5px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.tdcContentInput {
+  background-color: transparent;
+  border-color: transparent;
+  max-height: 50vh;
+
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  direction: ltr;
+  scrollbar-color: #d4aa70 #e4e4e4;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    cursor: pointer !important;
+    width: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    cursor: pointer !important;
+    background-color: transparent;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    cursor: pointer !important;
+    border-radius: 100px;
+    border: 7px solid transparent;
+    background-clip: content-box;
+    background-color: var(--bw);
+  }
+}
+
+.resizeIcon {
+  color: var(--bw);
+  font-size: 1em;
+
+  &:hover {
+    font-size: 1.25em;
+  }
+}
+
+.deleteIcon {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--wb);
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: var(--accent);
+  }
+}

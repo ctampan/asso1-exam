@@ -4,10 +4,10 @@
   background-color: var(--invert);
   border: 5px solid var(--accent);
   border-radius: 100em;
-  color: var(--wb);
+  color: var(--bw);
   
   &:hover {
     background-color: var(--primary);
-    color: var(--bw);
+    color: var(--wb);
   }
 }

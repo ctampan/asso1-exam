@@ -1,0 +1,85 @@
+.createNewButton {
+  background-color: var(--invert) !important;
+  border-color: var(--invert) !important;
+  color: var(--bw) !important;
+  font-size: 1.25em !important;
+  font-weight: 700 !important;
+  height: 2.5em;
+
+  &:hover {
+    background-color: var(--secondary) !important;
+    border-color: var(--secondary) !important;
+    color: var(--wb) !important;
+  }
+}
+
+.tdcTitleInput {
+  background-color: transparent;
+  border-color: transparent;
+  max-height: 30vh;
+
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  direction: ltr;
+  scrollbar-color: #d4aa70 #e4e4e4;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: 7px solid transparent;
+    background-clip: content-box;
+    background-color: var(--bw);
+  }
+}
+
+.tdcContentInput {
+  background-color: transparent;
+  border-color: transparent;
+  max-height: 50vh;
+
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  direction: ltr;
+  scrollbar-color: #d4aa70 #e4e4e4;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    cursor: pointer !important;
+    width: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    cursor: pointer !important;
+    background-color: transparent;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    cursor: pointer !important;
+    border-radius: 100px;
+    border: 7px solid transparent;
+    background-clip: content-box;
+    background-color: var(--bw);
+  }
+}

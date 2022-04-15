@@ -1,7 +1,7 @@
 import { ThunkDispatch as Dispatch } from "redux-thunk";
 import sha256 from "sha256";
-import { isCredentialValid } from "../../Hooks/useAuth";
 import { ICredentials } from "../../Interfaces/Credentials.interface";
+import { isCredentialValid } from "../../Services/Auth.service";
 import { store } from "./Redux.config";
 
 import * as constants from "./Redux.constant";

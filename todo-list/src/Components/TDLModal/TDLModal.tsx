@@ -4,12 +4,20 @@ import styles from "./styles.module.scss";
 interface IProps {
   show: boolean;
   toggleShow: () => void;
+  header: string | React.ReactElement;
   body?: React.ReactElement;
   footer?: React.ReactElement;
   otherProps?: ModalProps;
 }
 
-const TDLModal = ({ show, toggleShow, body, footer, otherProps }: IProps) => (
+const TDLModal = ({
+  show,
+  toggleShow,
+  header,
+  body,
+  footer,
+  otherProps,
+}: IProps) => (
   <Modal
     show={show}
     size="lg"
@@ -21,9 +29,9 @@ const TDLModal = ({ show, toggleShow, body, footer, otherProps }: IProps) => (
     <Modal.Header closeButton className={`${styles.modalHeader}`}>
       <Modal.Title
         id="contained-modal-title-vcenter"
-        className={`${styles.modalTitle}`}
+        className={`${styles.modalTitle} w-100`}
       >
-        Modal heading
+        {header}
       </Modal.Title>
     </Modal.Header>
     {body && <Modal.Body className={`${styles.modalBody}`}>{body}</Modal.Body>}
