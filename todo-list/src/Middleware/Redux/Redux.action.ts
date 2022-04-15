@@ -1,4 +1,5 @@
 import { ThunkDispatch as Dispatch } from "redux-thunk";
+import sha256 from "sha256";
 import { isCredentialValid } from "../../Hooks/useAuth";
 import { ICredentials } from "../../Interfaces/Credentials.interface";
 import { store } from "./Redux.config";
@@ -40,7 +41,7 @@ export function logInWithCredentials({ username, password }: ICredentials) {
     return async (dispatch: Dispatch<AuthenticationAction, {}, any>) => {
       const payload: ICredentials = {
         username,
-        password,
+        password: sha256(password),
       };
       dispatch(authenticate(payload));
     };

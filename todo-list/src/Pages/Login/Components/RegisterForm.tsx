@@ -1,9 +1,14 @@
-import { is } from "immer/dist/internal";
 import { useState } from "react";
-import { Card, Alert, InputGroup, FormControl, Button } from "react-bootstrap";
+import {
+  Card,
+  Alert,
+  InputGroup,
+  FormControl,
+  Button,
+  Spinner,
+} from "react-bootstrap";
 import { FaUser, FaKey, FaEye, FaEyeSlash } from "react-icons/fa";
-import { addCredential, isUsernameAvailable } from "../../../Hooks/useAuth";
-import { updateError } from "../../../Middleware/Redux/Redux.action";
+import { PostRegisterUser } from "../../../Services/Auth.service";
 import styles from "./styles.module.scss";
 
 interface IProps {
@@ -16,17 +21,24 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isRegisterLoading, setIsRegisterLoading] = useState(false);
 
-  const handleRegister = () => {
-    if (isUsernameAvailable(username)) {
-      addCredential({ username, password });
-      setSuccessMessage("Account Successfully Added.");
+  const handleRegister = async () => {
+    setIsRegisterLoading(true);
+
+    try {
+      const result = await PostRegisterUser({ username, password });
+
+      setSuccessMessage(result);
+
       toggleShowModal();
-    } else {
+    } catch (error) {
       setUsername("");
       setPassword("");
-      setErrorMessage("Username has already taken.");
+      setErrorMessage((error as Error).message);
     }
+
+    setIsRegisterLoading(false);
   };
 
   return (
@@ -36,7 +48,7 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
           variant="danger"
           show={!!errorMessage}
           onClose={() => {
-            setErrorMessage('');
+            setErrorMessage("");
           }}
           dismissible
         >
@@ -79,8 +91,9 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
       <Button
         className={`${styles.registerButton} transition-250ms w-100`}
         onClick={handleRegister}
+        disabled={isRegisterLoading}
       >
-        Register
+        {isRegisterLoading ? <Spinner animation={"border"} /> : "Register"}
       </Button>
     </Card.Body>
   );

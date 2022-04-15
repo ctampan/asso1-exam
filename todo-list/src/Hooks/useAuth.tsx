@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { ReactReduxContext } from "react-redux";
 import sha256 from "sha256";
 import { ICredentials } from "../Interfaces/Credentials.interface";
 

@@ -1,0 +1,21 @@
+.logoutMenu {
+  color: var(--wb);
+}
+
+.logoutButton {
+  margin-left: 0.5em !important;
+  // background-color: var(--accent) !important;
+  // border-color: var(--accent) !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  border-radius: 5px !important;
+  color: var(--wb) !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+
+  &:hover {
+    background-color: var(--invert) !important;
+    border-color: var(--invert) !important;
+    color: var(--bw) !important;
+  }
+}

@@ -5,7 +5,7 @@
 }
 
 .loginCard {
-  width: 30%;
+  width: 30em;
 }
 
 .loginCardHeader {
@@ -21,13 +21,13 @@
 }
 
 .loginPrefix {
-  background-color: var(--invert)  !important;
-  color: var(--bw)  !important;
+  background-color: var(--invert) !important;
+  color: var(--bw) !important;
 }
 
 .loginSuffix {
-  background-color: var(--invert)  !important;
-  color: var(--bw)  !important;
+  background-color: var(--invert) !important;
+  color: var(--bw) !important;
 
   &:hover {
     background-color: var(--primary) !important;
@@ -36,8 +36,8 @@
 }
 
 .loginButton {
-  background-color: var(--invert)  !important;
-  border-color: var(--invert)  !important;
+  background-color: var(--invert) !important;
+  border-color: var(--invert) !important;
   color: var(--bw) !important;
   font-size: 1.25em !important;
   font-weight: 700 !important;
@@ -51,8 +51,8 @@
 }
 
 .registerButton {
-  background-color: var(--secondary)  !important;
-  border-color: var(--secondary)  !important;
+  background-color: var(--secondary) !important;
+  border-color: var(--secondary) !important;
   color: var(--bw) !important;
   font-size: 1.25em !important;
   font-weight: 700 !important;

@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { connect } from "react-redux";
 import styles from "./styles.module.scss";
 import { FaEye, FaEyeSlash, FaKey, FaUser } from "react-icons/fa";
-import "animate.css";
 import {
   logInWithCredentials,
   updateError,
@@ -14,10 +13,12 @@ import {
   Container,
   FormControl,
   InputGroup,
+  Spinner,
 } from "react-bootstrap";
 import { TDLModal } from "../../Components";
 import RegisterForm from "./Components";
 import { ICredentials } from "../../Interfaces/Credentials.interface";
+import timeout from "../../Utils/timeout";
 
 interface ICurrent {
   errorMessage: string;
@@ -37,6 +38,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
   const loginButtonRef = useRef<HTMLButtonElement | null>(null);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>();
+  const [isLoginLoading, setIsLoginLoading] = useState<boolean>(false);
 
   const triggerLoginButton = (e: any) => {
     if (e.key === "Enter" && loginButtonRef.current) {
@@ -46,6 +48,14 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
 
   const toggleShowModal = () => {
     setShowRegisterModal(!showRegisterModal);
+  };
+
+  const handleLogin = async () => {
+    setIsLoginLoading(true);
+    updateError(undefined);
+    await timeout(1000);
+    logInConnect({ username, password });
+    setIsLoginLoading(false);
   };
 
   return (
@@ -76,7 +86,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
                 variant="success"
                 show={!!successMessage}
                 onClose={() => {
-                  setSuccessMessage('');
+                  setSuccessMessage("");
                 }}
                 dismissible
               >
@@ -121,15 +131,17 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
             <Button
               ref={loginButtonRef}
               className={`${styles.loginButton} transition-250ms w-100 mb-2`}
-              onClick={() => logInConnect({ username, password })}
+              onClick={handleLogin}
+              disabled={isLoginLoading}
             >
-              Login
+              {isLoginLoading ? <Spinner animation={"border"} /> : "Login"}
             </Button>
             <Button
               className={`${styles.registerButton} transition-250ms w-100`}
               onClick={() => setShowRegisterModal(true)}
+              disabled={isLoginLoading}
             >
-              Register
+              {isLoginLoading ? <Spinner animation={"border"} /> : "Register"}
             </Button>
           </Card.Body>
         </Card>
@@ -137,8 +149,13 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
       <TDLModal
         show={showRegisterModal}
         toggleShow={toggleShowModal}
-        otherProps={{size: 'sm'}}
-        body={<RegisterForm toggleShowModal={toggleShowModal} setSuccessMessage={setSuccessMessage} />}
+        otherProps={{ size: "sm" }}
+        body={
+          <RegisterForm
+            toggleShowModal={toggleShowModal}
+            setSuccessMessage={setSuccessMessage}
+          />
+        }
       />
     </div>
   );
