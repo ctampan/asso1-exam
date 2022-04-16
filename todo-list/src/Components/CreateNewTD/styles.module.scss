@@ -1,15 +1,10 @@
 .createNewButton {
-  background-color: var(--invert) !important;
-  border-color: var(--invert) !important;
-  color: var(--bw) !important;
-  font-size: 1.25em !important;
-  font-weight: 700 !important;
-  height: 2.5em;
+  color: var(--invert) !important;
+  font-size: 2em !important;
+  cursor: pointer;
 
   &:hover {
-    background-color: var(--secondary) !important;
-    border-color: var(--secondary) !important;
-    color: var(--wb) !important;
+    color: var(--accent) !important;
   }
 }
 

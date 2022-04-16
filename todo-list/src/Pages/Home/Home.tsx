@@ -15,33 +15,64 @@ interface IProps {
 function Home({ payload }: IProps) {
   const [todoList, setTodoList] = useState<ITodoList[]>([]);
   const [triggerList, setTriggerList] = useState<boolean>(false);
+  const [isComplete, setIsComplete] = useState<boolean>(false);
+  const [onHoverHeader, setOnHoverHeader] = useState<boolean>(false);
 
   useEffect(() => {
-    setTodoList(GetTodoList(payload.username));
+    setTodoList(GetTodoList({ owner: payload.username }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [triggerList]);
+  }, [triggerList, isComplete]);
 
   return (
     <div className={`${styles.homeContainer}`}>
-      <title>Home | Todo List</title>
+      <title>Todo List</title>
       <LogoutMenu username={payload.username} />
       <Container className="d-flex justify-content-center">
         <div className="w-50 py-3">
-          <CreateNewTD
-            username={payload.username}
-            refreshList={() => setTriggerList(!triggerList)}
-          />
-          <hr />
-          {todoList.map((todo) => (
-            <div className="my-3">
-              <TDCollapse
-                title={decrypt(todo.title)}
-                content={decrypt(todo.content)}
-                id={todo.id}
-                owner={payload.username}
-                refreshList={() => setTriggerList(!triggerList)}
-              />
+          <div className="d-flex justify-content-between align-items-center pb-3">
+            <div
+              className={`${styles.header} transition-250ms`}
+              onClick={() => setIsComplete(!isComplete)}
+              onMouseOver={() => setOnHoverHeader(true)}
+              onMouseOut={() => setOnHoverHeader(false)}
+            >
+              <span
+                className={`${
+                  !isComplete === !onHoverHeader
+                    ? styles.headerUnderline + " opacity-100"
+                    : "opacity-25"
+                }`}
+              >
+                IN
+              </span>
+              <span className={`${styles.headerUnderline}`}>COMPLETE</span>
             </div>
+            <CreateNewTD
+              username={payload.username}
+              isComplete={isComplete}
+              refreshList={() => setTriggerList(!triggerList)}
+            />
+          </div>
+          {/* <br /> */}
+          {todoList.map((todo) => (
+            <>
+              {todo.isComplete === isComplete && (
+                <div
+                  className={`my-4 ${
+                    !isComplete ? "opacity-100" : "opacity-50"
+                  }`}
+                >
+                  <TDCollapse
+                    title={decrypt(todo.title)}
+                    content={decrypt(todo.content)}
+                    id={todo.id}
+                    owner={payload.username}
+                    isComplete={todo.isComplete}
+                    refreshList={() => setTriggerList(!triggerList)}
+                  />
+                </div>
+              )}
+            </>
           ))}
         </div>
       </Container>

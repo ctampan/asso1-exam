@@ -3,4 +3,5 @@ export interface ITodoList{
     title: string;
     content: string;
     owner: string;
+    isComplete?: boolean;
 }

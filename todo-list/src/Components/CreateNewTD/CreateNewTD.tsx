@@ -1,17 +1,21 @@
 import { useMemo, useState } from "react";
 import TextareaAutosize from "react-autosize-textarea/lib";
-import { Button } from "react-bootstrap";
+import { FaPlusCircle } from "react-icons/fa";
 import useDidUpdate from "../../Hooks/useDidUpdate";
-import { PostCreateUpdateTodo } from "../../Services/Todo.service";
+import {
+  PostCreateUpdateTodo,
+  TodoCheckCleanUp,
+} from "../../Services/Todo.service";
 import TDLModal from "../TDLModal";
 import styles from "./styles.module.scss";
 
 interface IProps {
   username: string;
   refreshList: () => void;
+  isComplete: boolean;
 }
 
-const CreateNewTD = ({ username,refreshList }: IProps) => {
+const CreateNewTD = ({ username, refreshList, isComplete }: IProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -19,7 +23,7 @@ const CreateNewTD = ({ username,refreshList }: IProps) => {
   const id = useMemo(() => Date.now(), [isModalOpen]);
 
   useDidUpdate(() => {
-    PostCreateUpdateTodo({ id, title, content, owner: username });
+    PostCreateUpdateTodo({ id, title, content, owner: username, isComplete });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, content]);
 
@@ -32,18 +36,20 @@ const CreateNewTD = ({ username,refreshList }: IProps) => {
   };
 
   return (
-    <div className="w-100">
-      <Button
+    <>
+      <FaPlusCircle
+        className={`${styles.createNewButton} transition-250ms`}
         onClick={() => {
           setIsModalOpen(true);
         }}
-        className={styles.createNewButton}
-      >
-        Create New
-      </Button>
+      />
       <TDLModal
         show={isModalOpen}
-        toggleShow={() => {setIsModalOpen(!isModalOpen); refreshList()}}
+        toggleShow={() => {
+          setIsModalOpen(!isModalOpen);
+          refreshList();
+          TodoCheckCleanUp({ id, owner: username });
+        }}
         header={
           <div>
             <TextareaAutosize
@@ -66,7 +72,7 @@ const CreateNewTD = ({ username,refreshList }: IProps) => {
           </div>
         }
       />
-    </div>
+    </>
   );
 };
 

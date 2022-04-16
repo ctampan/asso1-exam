@@ -107,6 +107,18 @@
   }
 }
 
+.completeIcon {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--wb);
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
 .deleteIcon {
   font-size: 1.5em;
   font-weight: 500;

@@ -151,7 +151,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
               onClick={() => setShowRegisterModal(true)}
               disabled={isLoginLoading}
             >
-              {isLoginLoading ? <Spinner animation={"border"} /> : "Register"}
+              Register
             </Button>
           </Card.Body>
         </Card>
