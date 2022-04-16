@@ -52,13 +52,6 @@ code {
   cursor: pointer;
 }
 
-.branding {
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--invert);
-  margin-right: 5px;
-}
-
 .fixed-branding {
   position: fixed;
   bottom: 0;
@@ -69,4 +62,9 @@ code {
   font-size: 1.25vw;
   font-weight: 700;
   border-radius: 0 1vw 0 0;
+  user-select: none;
+
+  @media only screen and (max-width: 992px) {
+    font-size: 3vw;
+  }
 }

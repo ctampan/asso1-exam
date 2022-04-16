@@ -25,9 +25,9 @@ function Home({ payload }: IProps) {
 
   return (
     <div className={`${styles.homeContainer}`}>
-      <title>Mudkip Todo List</title>
+      <title>Mudkip To-do List</title>
       <LogoutMenu username={payload.username} />
-      <div className="fixed-branding">Mudkip Todo List</div>
+      <div className="fixed-branding">Mudkip To-do List</div>
       <Container
         className={`${styles.homeInnerContainer} d-flex justify-content-center`}
       >
