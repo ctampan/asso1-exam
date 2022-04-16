@@ -9,7 +9,7 @@ interface IProps {
 const DarkmodeToggle = ({ theme, switchTheme }: IProps) => (
   <div
     onClick={switchTheme}
-    className={`${styles.darkmodeToggle} position-absolute m-3 d-flex justify-content-center align-items-center transition-250ms user-select-none cursor-pointer`}
+    className={`${styles.darkmodeToggle} position-fixed m-3 d-flex justify-content-center align-items-center transition-250ms user-select-none cursor-pointer`}
   >
     {theme === "dark" ? <FaSun /> : <FaMoon />}
   </div>

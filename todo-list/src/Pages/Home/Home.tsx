@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { CreateNewTD, LogoutMenu, TDCollapse } from "../../Components";
 import { ITodoList } from "../../Interfaces/Content.interface";
@@ -25,14 +25,20 @@ function Home({ payload }: IProps) {
 
   return (
     <div className={`${styles.homeContainer}`}>
-      <title>Todo List</title>
+      <title>Mudkip Todo List</title>
       <LogoutMenu username={payload.username} />
-      <Container className="d-flex justify-content-center">
-        <div className="w-50 py-3">
+      <div className="fixed-branding">Mudkip Todo List</div>
+      <Container
+        className={`${styles.homeInnerContainer} d-flex justify-content-center`}
+      >
+        <Col lg={6} xs={12} className="py-3">
           <div className="d-flex justify-content-between align-items-center pb-3">
             <div
               className={`${styles.header} transition-250ms`}
-              onClick={() => setIsComplete(!isComplete)}
+              onClick={() => {
+                setIsComplete(!isComplete);
+                setOnHoverHeader(false);
+              }}
               onMouseOver={() => setOnHoverHeader(true)}
               onMouseOut={() => setOnHoverHeader(false)}
             >
@@ -74,7 +80,7 @@ function Home({ payload }: IProps) {
               )}
             </>
           ))}
-        </div>
+        </Col>
       </Container>
     </div>
   );

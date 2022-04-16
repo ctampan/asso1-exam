@@ -51,3 +51,22 @@ code {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.branding {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--invert);
+  margin-right: 5px;
+}
+
+.fixed-branding {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 0.75vw;
+  background-color: var(--secondary);
+  color: var(--wb);
+  font-size: 1.25vw;
+  font-weight: 700;
+  border-radius: 0 1vw 0 0;
+}

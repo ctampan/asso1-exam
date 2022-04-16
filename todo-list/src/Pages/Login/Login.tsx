@@ -70,91 +70,96 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
 
   return (
     <div className={`${styles.loginContainer}`}>
-      <title>Login | Todo List</title>
-      <Container className="d-flex justify-content-center align-items-center h-100">
-        <Card className={`${styles.loginCard}`}>
-          <Card.Header
-            className={`${styles.loginCardHeader} user-select-none transition-250ms`}
-          >
-            Login
-          </Card.Header>
-          <Card.Body className={`${styles.loginCardBody}`}>
-            {errorMessage && (
-              <Alert
-                variant="danger"
-                show={!!errorMessage}
-                onClose={() => {
-                  updateError(undefined);
-                }}
-                dismissible
-              >
-                {errorMessage}
-              </Alert>
-            )}
-            {successMessage && (
-              <Alert
-                variant="success"
-                show={!!successMessage}
-                onClose={() => {
-                  setSuccessMessage("");
-                }}
-                dismissible
-              >
-                {successMessage}
-              </Alert>
-            )}
-            <InputGroup className="mb-3">
-              <InputGroup.Text
-                className={`${styles.loginPrefix} transition-250ms`}
-              >
-                <FaUser />
-              </InputGroup.Text>
-              <FormControl
-                placeholder="Username"
-                aria-label="Username"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-                onKeyDown={triggerLoginButton}
-              />
-            </InputGroup>
-            <InputGroup className="mb-3">
-              <InputGroup.Text
-                className={`${styles.loginPrefix} transition-250ms`}
-              >
-                <FaKey />
-              </InputGroup.Text>
-              <FormControl
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                aria-label="Password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                onKeyDown={triggerLoginButton}
-              />
-              <InputGroup.Text
-                className={`${styles.loginSuffix} transition-250ms user-select-none cursor-pointer`}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {!showPassword ? <FaEye /> : <FaEyeSlash />}
-              </InputGroup.Text>
-            </InputGroup>
-            <Button
-              ref={loginButtonRef}
-              className={`${styles.loginButton} transition-250ms w-100 mb-2`}
-              onClick={handleLogin}
-              disabled={isLoginLoading}
+      <title>Login | Mudkip Todo List</title>
+      <Container
+        className={`d-flex justify-content-center align-items-center h-100`}
+      >
+        <div>
+          <div className="branding transition-250ms">Mudkip Todo List</div>
+          <Card className={`${styles.loginCard}`}>
+            <Card.Header
+              className={`${styles.loginCardHeader} user-select-none transition-250ms`}
             >
-              {isLoginLoading ? <Spinner animation={"border"} /> : "Login"}
-            </Button>
-            <Button
-              className={`${styles.registerButton} transition-250ms w-100`}
-              onClick={() => setShowRegisterModal(true)}
-              disabled={isLoginLoading}
-            >
-              Register
-            </Button>
-          </Card.Body>
-        </Card>
+              Login
+            </Card.Header>
+            <Card.Body className={`${styles.loginCardBody}`}>
+              {errorMessage && (
+                <Alert
+                  variant="danger"
+                  show={!!errorMessage}
+                  onClose={() => {
+                    updateError(undefined);
+                  }}
+                  dismissible
+                >
+                  {errorMessage}
+                </Alert>
+              )}
+              {successMessage && (
+                <Alert
+                  variant="success"
+                  show={!!successMessage}
+                  onClose={() => {
+                    setSuccessMessage("");
+                  }}
+                  dismissible
+                >
+                  {successMessage}
+                </Alert>
+              )}
+              <InputGroup className="mb-3">
+                <InputGroup.Text
+                  className={`${styles.loginPrefix} transition-250ms`}
+                >
+                  <FaUser />
+                </InputGroup.Text>
+                <FormControl
+                  placeholder="Username"
+                  aria-label="Username"
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                  onKeyDown={triggerLoginButton}
+                />
+              </InputGroup>
+              <InputGroup className="mb-3">
+                <InputGroup.Text
+                  className={`${styles.loginPrefix} transition-250ms`}
+                >
+                  <FaKey />
+                </InputGroup.Text>
+                <FormControl
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  aria-label="Password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  onKeyDown={triggerLoginButton}
+                />
+                <InputGroup.Text
+                  className={`${styles.loginSuffix} transition-250ms user-select-none cursor-pointer`}
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {!showPassword ? <FaEye /> : <FaEyeSlash />}
+                </InputGroup.Text>
+              </InputGroup>
+              <Button
+                ref={loginButtonRef}
+                className={`${styles.loginButton} transition-250ms w-100 mb-2`}
+                onClick={handleLogin}
+                disabled={isLoginLoading}
+              >
+                {isLoginLoading ? <Spinner animation={"border"} /> : "Login"}
+              </Button>
+              <Button
+                className={`${styles.registerButton} transition-250ms w-100`}
+                onClick={() => setShowRegisterModal(true)}
+                disabled={isLoginLoading}
+              >
+                Register
+              </Button>
+            </Card.Body>
+          </Card>
+        </div>
       </Container>
       <TDLModal
         show={showRegisterModal}

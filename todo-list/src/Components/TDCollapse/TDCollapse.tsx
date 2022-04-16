@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import TextareaAutosize from "react-autosize-textarea/lib";
 import { Col, Collapse, Row } from "react-bootstrap";
-import {
-  FaCheckCircle,
-  FaCircle,
-  FaExpandAlt,
-  FaTrash,
-} from "react-icons/fa";
+import { FaCheckCircle, FaCircle, FaExpandAlt, FaTrash } from "react-icons/fa";
 import { ITodoList } from "../../Interfaces/Content.interface";
 import {
   DeleteTodo,
@@ -70,7 +65,7 @@ const TDCollapse = ({
   return (
     <div className="w-100">
       <Row>
-        <Col xs={1} className="d-flex justify-content-center">
+        <Col md={1} sm={2} xs={3} className="d-flex justify-content-center">
           <div
             className={`${styles.completeIcon} mt-2 transition-250ms`}
             onClick={handleChangeIc}
@@ -80,7 +75,7 @@ const TDCollapse = ({
             {icState !== onHover ? <FaCheckCircle /> : <FaCircle />}
           </div>
         </Col>
-        <Col xs={10}>
+        <Col md={10} sm={8} xs={6}>
           <Row>
             <div
               className={`${styles.tdcTitle} transition-250ms`}
@@ -110,14 +105,16 @@ const TDCollapse = ({
             </Collapse>
           </Row>
         </Col>
-        <Col xs={1} className="d-flex justify-content-center">
-          <FaTrash
-            className={`${styles.deleteIcon} mt-3 transition-250ms`}
+        <Col md={1} sm={2} xs={3} className="d-flex justify-content-center">
+          <div
+            className={`${styles.deleteIcon} mt-2 transition-250ms`}
             onClick={() => {
               DeleteTodo({ id, owner });
               refreshList();
             }}
-          />
+          >
+            <FaTrash />
+          </div>
         </Col>
       </Row>
       <TDLModal

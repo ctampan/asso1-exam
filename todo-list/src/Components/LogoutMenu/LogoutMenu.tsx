@@ -15,7 +15,7 @@ const LogoutMenu = ({ logOutConnect, username }: IProps) => {
   return (
     <Dropdown
       as={ButtonGroup}
-      className={`${styles.logoutMenu} position-absolute end-0 top-0 m-3 d-flex justify-content-center align-items-center transition-250ms user-select-none`}
+      className={`${styles.logoutMenu} position-fixed end-0 top-0 m-3 d-flex justify-content-center align-items-center transition-250ms user-select-none`}
     >
       <span>
         Hello, <b>{username}</b>
