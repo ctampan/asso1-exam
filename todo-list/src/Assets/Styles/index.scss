@@ -52,6 +52,13 @@ code {
   cursor: pointer;
 }
 
+.branding {
+  text-align: center;
+  font-size: 2.25em;
+  font-weight: 700;
+  color: var(--invert);
+}
+
 .fixed-branding {
   position: fixed;
   bottom: 0;

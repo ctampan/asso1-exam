@@ -71,11 +71,12 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
   return (
     <div className={`${styles.loginContainer}`}>
       <title>Login | Mudkip To-do List</title>
-      <div className="fixed-branding">Mudkip To-do List</div>
+      {/* <div className="fixed-branding">Mudkip To-do List</div> */}
       <Container
         className={`d-flex justify-content-center align-items-center h-100`}
       >
         <Card className={`${styles.loginCard}`}>
+          <div className="branding">Mudkip To-do List</div>
           <Card.Header
             className={`${styles.loginCardHeader} user-select-none transition-250ms`}
           >

@@ -9,6 +9,7 @@ function PostRegisterUser({
     setTimeout(() => {
       if (!username || !password) {
         reject(Error("Username or password must not be null"));
+        return;
       }
 
       if (isUsernameAvailable(username)) {

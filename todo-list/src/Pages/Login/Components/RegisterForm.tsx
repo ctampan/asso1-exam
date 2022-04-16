@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Card,
   Alert,
@@ -22,6 +22,13 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
   const [isRegisterLoading, setIsRegisterLoading] = useState(false);
+  const registerButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  const triggerRegisterButton = (e: any) => {
+    if (e.key === "Enter" && registerButtonRef.current) {
+      registerButtonRef.current.click();
+    }
+  };
 
   const handleRegister = async () => {
     setIsRegisterLoading(true);
@@ -67,6 +74,7 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
           placeholder="Username"
           aria-label="Username"
           value={username}
+          onKeyDown={triggerRegisterButton}
           onChange={(event) => setUsername(event.target.value)}
         />
       </InputGroup>
@@ -82,6 +90,7 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
           placeholder="Password"
           aria-label="Password"
           value={password}
+          onKeyDown={triggerRegisterButton}
           onChange={(event) => setPassword(event.target.value)}
         />
         <InputGroup.Text
@@ -93,6 +102,7 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
       </InputGroup>
       <Button
         id="register-button"
+        ref={registerButtonRef}
         className={`${styles.registerButton} transition-250ms w-100`}
         onClick={handleRegister}
         disabled={isRegisterLoading}
