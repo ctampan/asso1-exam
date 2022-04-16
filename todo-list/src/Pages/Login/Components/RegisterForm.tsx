@@ -45,6 +45,7 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
     <Card.Body className={`${styles.registerCardBody}`}>
       {errorMessage && (
         <Alert
+          id="register-error-message"
           variant="danger"
           show={!!errorMessage}
           onClose={() => {
@@ -62,6 +63,7 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
           <FaUser />
         </InputGroup.Text>
         <FormControl
+          id="register-username"
           placeholder="Username"
           aria-label="Username"
           value={username}
@@ -75,6 +77,7 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
           <FaKey />
         </InputGroup.Text>
         <FormControl
+          id="register-password"
           type={showPassword ? "text" : "password"}
           placeholder="Password"
           aria-label="Password"
@@ -89,6 +92,7 @@ const RegisterForm = ({ toggleShowModal, setSuccessMessage }: IProps) => {
         </InputGroup.Text>
       </InputGroup>
       <Button
+        id="register-button"
         className={`${styles.registerButton} transition-250ms w-100`}
         onClick={handleRegister}
         disabled={isRegisterLoading}

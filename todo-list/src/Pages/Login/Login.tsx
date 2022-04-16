@@ -84,6 +84,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
           <Card.Body className={`${styles.loginCardBody}`}>
             {errorMessage && (
               <Alert
+                id="login-error-message"
                 variant="danger"
                 show={!!errorMessage}
                 onClose={() => {
@@ -96,6 +97,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
             )}
             {successMessage && (
               <Alert
+                id="login-success-message"
                 variant="success"
                 show={!!successMessage}
                 onClose={() => {
@@ -113,6 +115,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
                 <FaUser />
               </InputGroup.Text>
               <FormControl
+                id="login-username"
                 placeholder="Username"
                 aria-label="Username"
                 value={username}
@@ -127,6 +130,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
                 <FaKey />
               </InputGroup.Text>
               <FormControl
+                id="login-password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 aria-label="Password"
@@ -142,6 +146,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
               </InputGroup.Text>
             </InputGroup>
             <Button
+              id="login-button"
               ref={loginButtonRef}
               className={`${styles.loginButton} transition-250ms w-100 mb-2`}
               onClick={handleLogin}
@@ -150,6 +155,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
               {isLoginLoading ? <Spinner animation={"border"} /> : "Login"}
             </Button>
             <Button
+              id="login-register-button"
               className={`${styles.registerButton} transition-250ms w-100`}
               onClick={() => setShowRegisterModal(true)}
               disabled={isLoginLoading}

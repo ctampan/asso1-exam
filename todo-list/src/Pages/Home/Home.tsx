@@ -34,6 +34,7 @@ function Home({ payload }: IProps) {
         <Col lg={6} xs={12} className="py-3">
           <div className="d-flex justify-content-between align-items-center pb-3">
             <div
+              id="incomplete-toggle"
               className={`${styles.header} transition-250ms`}
               onClick={() => {
                 setIsComplete(!isComplete);

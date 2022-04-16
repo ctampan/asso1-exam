@@ -18,18 +18,19 @@ const LogoutMenu = ({ logOutConnect, username }: IProps) => {
       className={`${styles.logoutMenu} position-fixed end-0 top-0 m-3 d-flex justify-content-center align-items-center transition-250ms user-select-none`}
     >
       <span>
-        Hello, <b>{username}</b>
+        Hello, <b id="username-bold">{username}</b>
       </span>
 
       <Dropdown.Toggle
         split
         variant="warning"
-        id="dropdown-split-basic"
+        id="logout-dropdown"
         className={`${styles.logoutButton}`}
       />
 
       <Dropdown.Menu>
         <Dropdown.Item
+          id="logout-button"
           onClick={() => {
             logOutConnect();
             navigate("/login");

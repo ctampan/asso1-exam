@@ -38,6 +38,7 @@ const CreateNewTD = ({ username, refreshList, isComplete }: IProps) => {
   return (
     <>
       <FaPlusCircle
+        id="create-new-button"
         className={`${styles.createNewButton} transition-250ms`}
         onClick={() => {
           setIsModalOpen(true);
@@ -53,6 +54,7 @@ const CreateNewTD = ({ username, refreshList, isComplete }: IProps) => {
         header={
           <div>
             <TextareaAutosize
+              id="title-input"
               className={`${styles.tdcTitleInput} w-100`}
               maxLength={500}
               placeholder="Title"
@@ -64,6 +66,7 @@ const CreateNewTD = ({ username, refreshList, isComplete }: IProps) => {
         body={
           <div>
             <TextareaAutosize
+              id="content-input"
               className={`${styles.tdcContentInput} w-100`}
               maxLength={2000}
               placeholder="Take a note..."
