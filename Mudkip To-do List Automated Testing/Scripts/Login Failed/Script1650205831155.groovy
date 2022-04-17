@@ -17,9 +17,9 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WebUI.setText(findTestObject('Login Page/login_username'), 'test')
+WebUI.setText(findTestObject('Login Page/login_username'), 'foo')
 
-WebUI.setEncryptedText(findTestObject('Login Page/login_password'), 'P9ET2sDE0SE=')
+WebUI.setEncryptedText(findTestObject('Login Page/login_password'), 'YnSoV8HhtzA=')
 
 WebUI.click(findTestObject('Login Page/login_button'))
 

@@ -24,67 +24,65 @@ function Home({ payload }: IProps) {
   }, [triggerList, isComplete]);
 
   return (
-    <div>
+    <div id="container" className={`${styles.homeContainer}`}>
+      <title>Mudkip To-do List</title>
       <LogoutMenu username={payload.username} />
-      <div id="container" className={`${styles.homeContainer}`}>
-        <title>Mudkip To-do List</title>
-        <div className="fixed-branding">Mudkip To-do List</div>
-        <Container
-          className={`${styles.homeInnerContainer} d-flex justify-content-center`}
-        >
-          <Col lg={6} xs={12} className="py-3">
-            <div className="d-flex justify-content-between align-items-center pb-3">
-              <div
-                id="incomplete-toggle"
-                className={`${styles.header} transition-250ms`}
-                onClick={() => {
-                  setIsComplete(!isComplete);
-                  setOnHoverHeader(false);
-                }}
-                onMouseOver={() => setOnHoverHeader(true)}
-                onMouseOut={() => setOnHoverHeader(false)}
+      <div className="fixed-branding">Mudkip To-do List</div>
+      <Container
+        className={`${styles.homeInnerContainer} d-flex justify-content-center`}
+      >
+        <Col lg={6} xs={12} className="py-3">
+          <div className="d-flex justify-content-between align-items-center pb-3">
+            <div
+              id="incomplete-toggle"
+              className={`${styles.header} transition-250ms`}
+              onClick={() => {
+                setIsComplete(!isComplete);
+                setOnHoverHeader(false);
+              }}
+              onMouseOver={() => setOnHoverHeader(true)}
+              onMouseOut={() => setOnHoverHeader(false)}
+            >
+              <span
+                className={`${
+                  !isComplete === !onHoverHeader
+                    ? styles.headerUnderline + " opacity-100"
+                    : "opacity-25"
+                }`}
               >
-                <span
-                  className={`${
-                    !isComplete === !onHoverHeader
-                      ? styles.headerUnderline + " opacity-100"
-                      : "opacity-25"
+                IN
+              </span>
+              <span className={`${styles.headerUnderline}`}>COMPLETE</span>
+            </div>
+            <CreateNewTD
+              username={payload.username}
+              isComplete={isComplete}
+              refreshList={() => setTriggerList(!triggerList)}
+            />
+          </div>
+          {/* <br /> */}
+          {todoList.map((todo) => (
+            <>
+              {todo.isComplete === isComplete && (
+                <div
+                  className={`my-4 ${
+                    !isComplete ? "opacity-100" : "opacity-50"
                   }`}
                 >
-                  IN
-                </span>
-                <span className={`${styles.headerUnderline}`}>COMPLETE</span>
-              </div>
-              <CreateNewTD
-                username={payload.username}
-                isComplete={isComplete}
-                refreshList={() => setTriggerList(!triggerList)}
-              />
-            </div>
-            {/* <br /> */}
-            {todoList.map((todo) => (
-              <>
-                {todo.isComplete === isComplete && (
-                  <div
-                    className={`my-4 ${
-                      !isComplete ? "opacity-100" : "opacity-50"
-                    }`}
-                  >
-                    <TDCollapse
-                      title={decrypt(todo.title)}
-                      content={decrypt(todo.content)}
-                      id={todo.id}
-                      owner={payload.username}
-                      isComplete={todo.isComplete}
-                      refreshList={() => setTriggerList(!triggerList)}
-                    />
-                  </div>
-                )}
-              </>
-            ))}
-          </Col>
-        </Container>
-      </div>
+                  <TDCollapse
+                    title={decrypt(todo.title)}
+                    content={decrypt(todo.content)}
+                    id={todo.id}
+                    owner={payload.username}
+                    isComplete={todo.isComplete}
+                    refreshList={() => setTriggerList(!triggerList)}
+                  />
+                </div>
+              )}
+            </>
+          ))}
+        </Col>
+      </Container>
     </div>
   );
 }
