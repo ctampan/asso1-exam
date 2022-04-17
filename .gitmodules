@@ -1,0 +1,3 @@
+[submodule "absol-chat-app-server"]
+	path = absol-chat-app-server
+	url = https://git.heroku.com/absol-chat-app-server.git
