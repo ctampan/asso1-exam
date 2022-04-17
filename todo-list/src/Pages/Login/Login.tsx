@@ -69,7 +69,7 @@ function Login({ errorMessage, logInConnect, updateError }: Props) {
   };
 
   return (
-    <div className={`${styles.loginContainer}`}>
+    <div id="container" className={`${styles.loginContainer}`}>
       <title>Login | Mudkip To-do List</title>
       {/* <div className="fixed-branding">Mudkip To-do List</div> */}
       <Container

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>container</name>
+   <tag></tag>
+   <elementGuidId>03df52a7-28a3-481f-94d9-25b480f18c62</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[class~=Container]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#div[class~=Container]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@id = 'container']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>BASIC</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>container</value>
+      <webElementGuid>c30ecedb-9323-4cad-93fb-c12a1fef0d50</webElementGuid>
+   </webElementProperties>
+</WebElementEntity>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Register Failed - Account Already Existed</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>bcd158e1-a27e-4213-a3ab-9648e3c6acd9</testCaseGuid>
+</TestCaseEntity>
