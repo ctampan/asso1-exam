@@ -67,7 +67,7 @@ const TDCollapse = ({
       <Row>
         <Col md={1} sm={2} xs={3} className="d-flex justify-content-center">
           <div
-            id="todo-incomplete-toggle"
+            id={`todo-incomplete-toggle-${id}`}
             className={`${styles.completeIcon} mt-2 transition-250ms`}
             onClick={handleChangeIc}
             onMouseOver={() => setOnHover(true)}
@@ -79,7 +79,7 @@ const TDCollapse = ({
         <Col md={10} sm={8} xs={6}>
           <Row>
             <div
-              id="todo-title"
+              id={`todo-title-${id}`}
               className={`${styles.tdcTitle} transition-250ms`}
               onClick={() => setIsOpen(!isOpen)}
             >
@@ -89,7 +89,7 @@ const TDCollapse = ({
           <Row className="d-flex justify-content-center">
             <Collapse in={isOpen}>
               <div
-                id="todo-content"
+                id={`todo-content-${id}`}
                 className={`${styles.tdcContent} position-relative`}
               >
                 {content ? (
@@ -103,7 +103,7 @@ const TDCollapse = ({
                   </span>
                 )}
                 <FaExpandAlt
-                  id="todo-expand"
+                  id={`todo-expand-${id}`}
                   className={`${styles.resizeIcon} position-absolute bottom-0 end-0 m-2 cursor-pointer transition-250ms`}
                   onClick={() => setIsModalOpen(true)}
                 />
@@ -113,7 +113,7 @@ const TDCollapse = ({
         </Col>
         <Col md={1} sm={2} xs={3} className="d-flex justify-content-center">
           <div
-            id="todo-delete-button"
+            id={`todo-delete-button-${id}`}
             className={`${styles.deleteIcon} mt-2 transition-250ms`}
             onClick={() => {
               DeleteTodo({ id, owner });
@@ -134,7 +134,7 @@ const TDCollapse = ({
         header={
           <div>
             <TextareaAutosize
-              id="title-input"
+              id={`title-input-${id}`}
               className={`${styles.tdcTitleInput} w-100`}
               maxLength={500}
               placeholder="Title"
@@ -147,7 +147,7 @@ const TDCollapse = ({
         body={
           <div>
             <TextareaAutosize
-              id="content-input"
+              id={`content-input-${id}`}
               className={`${styles.tdcContentInput} w-100`}
               maxLength={2000}
               placeholder="Take a note..."

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>Register Failed - Account Already Existed</name>
+   <name>Edit Todo</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -10,30 +10,44 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>true</rerunImmediately>
-   <testSuiteGuid>9a415657-9e54-4a02-8c16-04c3439d88bd</testSuiteGuid>
+   <testSuiteGuid>742934b4-45e8-4568-860d-4fecdfe6e9ef</testSuiteGuid>
    <testCaseLink>
-      <guid>39669f08-9681-4cfd-8467-4695b795be99</guid>
+      <guid>8ac8146d-1d05-41a3-8dbb-d01e49fd51b2</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Initial Navigation</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>0acccb04-3e91-422b-8224-7cd9c4e2dc88</guid>
+      <guid>d1e6cb02-9ef4-4849-be4f-9409b305bc96</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Login Page/Register Success</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>86e458b7-cdc6-4127-a6f8-74549d62628d</guid>
+      <guid>a1218a33-4e4a-49b3-b2c2-83c360bb9466</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Login Page/Register Failed - Account Already Existed</testCaseId>
+      <testCaseId>Test Cases/Login Page/Login Success</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>fa649f45-c8c3-404d-ac3f-c9ffc7c9a8b3</guid>
+      <guid>f1062da2-edca-48ba-a312-cc9fe008cf69</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Home Page/Create New Todo</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>45358327-b840-47cd-9a2d-f3f20a6e15fd</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Home Page/Edit Todo</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>60a661d2-4a5e-4348-adfb-f6999f3030ce</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Close Browser</testCaseId>
