@@ -1,6 +1,7 @@
+import 'package:absol_chat_app_client/ChatPage.dart';
 import 'package:flutter/material.dart';
 
-import 'ChatPage.dart';
+import 'HomePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,13 +17,21 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Absol Chat App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: const Color(0xff737bac),
+        indicatorColor: const Color(0xff626283),
+        hoverColor: const Color(0xff414a6a),
+        backgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
         pageTransitionsTheme: const PageTransitionsTheme(builders: {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         }),
       ),
-      home: const ChatPage(),
+      initialRoute: HomePage.routeName,
+      routes: <String, WidgetBuilder>{
+        HomePage.routeName: (context) => HomePage(),
+        ChatPage.routeName: (context) => ChatPage(),
+      },
     );
   }
 }

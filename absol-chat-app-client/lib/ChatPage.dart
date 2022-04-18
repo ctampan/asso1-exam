@@ -1,12 +1,19 @@
 import 'dart:convert';
-import 'dart:developer';
 
+import 'package:absol_chat_app_client/constants.dart';
+import 'package:absol_chat_app_client/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_socket_io/flutter_socket_io.dart';
 import 'package:flutter_socket_io/socket_io_manager.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:localstorage/localstorage.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  ChatPage({Key? key}) : super(key: key);
+
+  final LocalStorage storage = LocalStorage('localstorage_app');
+
+  static const routeName = '/chatPage';
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -25,12 +32,11 @@ class _ChatPageState extends State<ChatPage> {
     textController = TextEditingController();
     scrollController = ScrollController();
     socketIO = SocketIOManager().createSocketIO(
-      'https://absol-chat-app-server.herokuapp.com/',
+      Constants.serverUrl,
       '/',
     );
     socketIO.init();
     socketIO.subscribe('receive_message', (jsonData) {
-      log('asdasda');
       Map<String, dynamic> data = json.decode(jsonData);
       setState(() => messages.add(data['message']));
       scrollController.animateTo(
@@ -48,7 +54,7 @@ class _ChatPageState extends State<ChatPage> {
       alignment: Alignment.centerLeft,
       child: Container(
         padding: const EdgeInsets.all(20.0),
-        margin: const EdgeInsets.only(bottom: 20.0, left: 20.0),
+        margin: const EdgeInsets.only(top: 10, bottom: 10.0, left: 20.0),
         decoration: BoxDecoration(
           color: Colors.deepPurple,
           borderRadius: BorderRadius.circular(20.0),
@@ -90,8 +96,9 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget buildSendButton() {
+    final theme = Theme.of(context);
     return FloatingActionButton(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: theme.primaryColor,
       onPressed: () {
         if (textController.text.isNotEmpty) {
           socketIO.sendMessage(
@@ -100,7 +107,7 @@ class _ChatPageState extends State<ChatPage> {
           textController.text = '';
           scrollController.animateTo(
             scrollController.position.maxScrollExtent,
-            duration: Duration(milliseconds: 600),
+            duration: const Duration(milliseconds: 600),
             curve: Curves.ease,
           );
         }
@@ -113,9 +120,10 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget buildInputArea() {
-    return SizedBox(
+    return Container(
       height: height * 0.1,
       width: width,
+      color: Colors.white,
       child: Row(
         children: <Widget>[
           buildChatInput(),
@@ -127,18 +135,45 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: height * 0.1),
-            buildMessageList(),
-            buildInputArea(),
-          ],
-        ),
-      ),
-    );
+
+    return FutureBuilder(
+        future: widget.storage.ready,
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.data == true) {
+            return Scaffold(
+              appBar: appBarWidget(context, 'Please Wait', widget.storage),
+              body: Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  SingleChildScrollView(
+                      child: Column(
+                    children: [
+                      buildMessageList(),
+                      SizedBox(height: height * 0.1),
+                    ],
+                  )),
+                  SizedBox(height: height * 0.1),
+                  buildInputArea(),
+                ],
+              ),
+            );
+          } else {
+            return Scaffold(
+              body: Center(
+                child: Column(
+                  children: [
+                    SpinKitFoldingCube(
+                      color: theme.indicatorColor,
+                      size: 50,
+                    )
+                  ],
+                ),
+              ),
+            );
+          }
+        });
   }
 }
