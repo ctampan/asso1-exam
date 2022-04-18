@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:absol_chat_app_client/constants.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_socket_io/flutter_socket_io.dart';
 import 'package:flutter_socket_io/socket_io_manager.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:http/http.dart' as http;
 import 'package:localstorage/localstorage.dart';
 
 class ChatPage extends StatefulWidget {
@@ -19,63 +21,152 @@ class ChatPage extends StatefulWidget {
   _ChatPageState createState() => _ChatPageState();
 }
 
+class _MessageBody {
+  const _MessageBody(
+      {required this.message, required this.sender, required this.roomId});
+
+  final String message;
+  final String sender;
+  final String roomId;
+}
+
 class _ChatPageState extends State<ChatPage> {
   late SocketIO socketIO;
-  late List<String> messages;
+  late List<_MessageBody> messages;
+  String otherName = '';
   late double height, width;
+  late double keyboardHeight;
   late TextEditingController textController;
   late ScrollController scrollController;
+
+  scrollToBottom() {
+    if (scrollController.hasClients) {
+      Future.delayed(const Duration(milliseconds: 500)).then((value) {
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.fastOutSlowIn,
+        );
+      });
+    }
+  }
 
   @override
   void initState() {
     messages = [];
     textController = TextEditingController();
     scrollController = ScrollController();
+
     socketIO = SocketIOManager().createSocketIO(
       Constants.serverUrl,
       '/',
     );
     socketIO.init();
-    socketIO.subscribe('receive_message', (jsonData) {
-      Map<String, dynamic> data = json.decode(jsonData);
-      setState(() => messages.add(data['message']));
-      scrollController.animateTo(
-        scrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 600),
-        curve: Curves.ease,
-      );
+
+    widget.storage.ready.then((ready) {
+      if (ready) {
+        String name = widget.storage.getItem('name');
+        String uuid = widget.storage.getItem('uuid');
+        String roomId =
+            json.decode(widget.storage.getItem('currentRoom'))['roomId'];
+
+        final url = Uri.parse(
+            Constants.serverUrl + '/random-chat/' + roomId + '/participants');
+        http.get(url).then((response) {
+          Map<String, dynamic> data = json.decode(response.body);
+
+          if (data != {}) {
+            var other =
+                data['participants'].where((person) => person['uuid'] != uuid);
+
+            setState(() {
+              otherName = other.isEmpty ? otherName : other.first['name'];
+            });
+          }
+        });
+
+        socketIO.subscribe('receive_message_' + roomId, (jsonData) {
+          Map<String, dynamic> data = json.decode(jsonData);
+          setState(() => messages.add(_MessageBody(
+              message: data['message'],
+              sender: data['sender'],
+              roomId: data['roomId'])));
+          scrollToBottom();
+        });
+
+        socketIO.subscribe('participant_' + roomId, (jsonData) {
+          Map<String, dynamic> data = json.decode(jsonData);
+          if (data['uuid'] != uuid) {
+            String type = data['type'];
+            setState(() {
+              otherName = type == 'join' ? data['otherName'] : '';
+              messages.add(_MessageBody(
+                  message: data['otherName'] +
+                      ' has ' +
+                      (type == 'join' ? 'joined' : 'leave') +
+                      ' the chat',
+                  sender: 'system',
+                  roomId: roomId));
+            });
+            scrollToBottom();
+          }
+        });
+
+        socketIO.connect();
+
+        socketIO.sendMessage(
+            'join_room',
+            json.encode({
+              'otherName': name,
+              'roomId': roomId,
+              'uuid': uuid,
+              'type': 'join'
+            }));
+      }
     });
-    socketIO.connect();
+
     super.initState();
   }
 
-  Widget buildSingleMessage(int index) {
+  Widget buildSingleMessage(int index, LocalStorage storage) {
+    String uuid = storage.getItem('uuid');
+    String messageSender = messages[index].sender;
+
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: messageSender == 'system'
+          ? Alignment.center
+          : uuid == messageSender
+              ? Alignment.centerRight
+              : Alignment.centerLeft,
       child: Container(
         padding: const EdgeInsets.all(20.0),
-        margin: const EdgeInsets.only(top: 10, bottom: 10.0, left: 20.0),
+        margin: const EdgeInsets.only(
+            top: 10, bottom: 10.0, left: 20.0, right: 20.0),
         decoration: BoxDecoration(
-          color: Colors.deepPurple,
+          color: messageSender == 'system'
+              ? Colors.blueGrey
+              : uuid == messageSender
+                  ? Colors.blueAccent
+                  : Colors.deepPurple,
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Text(
-          messages[index],
+          messages[index].message,
           style: const TextStyle(color: Colors.white, fontSize: 15.0),
         ),
       ),
     );
   }
 
-  Widget buildMessageList() {
+  Widget buildMessageList(LocalStorage storage) {
     return SizedBox(
-      height: height * 0.8,
+      height: (height * 0.8) - (keyboardHeight),
       width: width,
       child: ListView.builder(
         controller: scrollController,
         itemCount: messages.length,
         itemBuilder: (BuildContext context, int index) {
-          return buildSingleMessage(index);
+          return buildSingleMessage(index, storage);
         },
       ),
     );
@@ -95,21 +186,26 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget buildSendButton() {
+  Widget buildSendButton(LocalStorage storage) {
     final theme = Theme.of(context);
+    String uuid = storage.getItem('uuid');
+    String roomId = json.decode(storage.getItem('currentRoom'))['roomId'];
+
     return FloatingActionButton(
       backgroundColor: theme.primaryColor,
       onPressed: () {
         if (textController.text.isNotEmpty) {
           socketIO.sendMessage(
-              'send_message', json.encode({'message': textController.text}));
-          setState(() => messages.add(textController.text));
+              'send_message',
+              json.encode({
+                'message': textController.text,
+                'sender': uuid,
+                'roomId': roomId
+              }));
+          setState(() => messages.add(_MessageBody(
+              message: textController.text, sender: uuid, roomId: roomId)));
           textController.text = '';
-          scrollController.animateTo(
-            scrollController.position.maxScrollExtent,
-            duration: const Duration(milliseconds: 600),
-            curve: Curves.ease,
-          );
+          scrollToBottom();
         }
       },
       child: const Icon(
@@ -119,15 +215,15 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget buildInputArea() {
+  Widget buildInputArea(LocalStorage storage) {
     return Container(
       height: height * 0.1,
       width: width,
-      color: Colors.white,
+      color: Colors.white70,
       child: Row(
         children: <Widget>[
           buildChatInput(),
-          buildSendButton(),
+          buildSendButton(storage),
         ],
       ),
     );
@@ -138,25 +234,45 @@ class _ChatPageState extends State<ChatPage> {
     final theme = Theme.of(context);
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
+    keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
 
     return FutureBuilder(
         future: widget.storage.ready,
         builder: (BuildContext context, snapshot) {
           if (snapshot.data == true) {
+            String name = widget.storage.getItem('name');
+            String uuid = widget.storage.getItem('uuid');
+            String roomId =
+                json.decode(widget.storage.getItem('currentRoom'))['roomId'];
+
             return Scaffold(
-              appBar: appBarWidget(context, 'Please Wait', widget.storage),
+              appBar: appBarWidget(
+                  context,
+                  otherName,
+                  widget.storage,
+                  () => {
+                        socketIO.sendMessage(
+                            'leave_room',
+                            json.encode({
+                              'otherName': name,
+                              'roomId': roomId,
+                              'uuid': uuid,
+                              'type': 'leave'
+                            }))
+                      }),
               body: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
                   SingleChildScrollView(
                       child: Column(
                     children: [
-                      buildMessageList(),
-                      SizedBox(height: height * 0.1),
+                      buildMessageList(widget.storage),
+                      SizedBox(
+                        height: height * 0.1,
+                      )
                     ],
                   )),
-                  SizedBox(height: height * 0.1),
-                  buildInputArea(),
+                  buildInputArea(widget.storage),
                 ],
               ),
             );

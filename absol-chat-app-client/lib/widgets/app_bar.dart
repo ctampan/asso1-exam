@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_socket_io/flutter_socket_io.dart';
 import 'package:localstorage/localstorage.dart';
 
 import '../services/RandomChat.service.dart';
 
-AppBar appBarWidget(BuildContext context, String title, LocalStorage storage) {
+AppBar appBarWidget(BuildContext context, String title, LocalStorage storage, Function additionalFunction) {
   final theme = Theme.of(context);
   return AppBar(
     automaticallyImplyLeading: false,
@@ -21,6 +22,7 @@ AppBar appBarWidget(BuildContext context, String title, LocalStorage storage) {
             ),
             onPressed: () => {
               postLeaveRandomChat(storage),
+              additionalFunction(),
               Navigator.of(context).pop(),
             },
           )
