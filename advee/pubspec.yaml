@@ -95,3 +95,13 @@ flutter:
     - family: Proxima Nova
       fonts:
         - asset: assets/fonts/Proxima-Nova.ttf
+    - family: Gelion
+      fonts:
+        - asset: assets/fonts/Gelion SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Gelion Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Gelion Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Gelion Light.ttf
+          weight: 300

@@ -9,7 +9,7 @@ Widget welcomeWidget(BuildContext context) => Stack(
     ClipPath(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 370,
+        height: 320,
         color: Palette.blue,
       ),
       clipper: WelcomeContainerClipper(),

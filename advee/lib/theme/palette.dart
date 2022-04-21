@@ -16,4 +16,7 @@ class Palette {
   static const mandiri = Color(0xff2d5ffe);
   static const bca = Color(0xff4350c6);
   static const ovo = Color(0xff4c3494);
+
+  static const circle1 = Color(0xff367bec);
+  static const circle2 = Color(0xff3f75eb);
 }
