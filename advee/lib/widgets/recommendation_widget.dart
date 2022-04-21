@@ -30,7 +30,6 @@ Widget recommendationWidget(BuildContext context) => Padding(
                   const Text(
                     'Deposit anda di Bank Mandiri akan segera jatuh tempo dalam 6 hari lagi, click untuk melihat rekomendasi alokasi.',
                     style: TextStyle(
-                        fontFamily: 'Gelion',
                         fontSize: 15,
                         color: Colors.white,
                         fontWeight: FontWeight.w300),
@@ -119,7 +118,6 @@ Widget _buildClickableRecommendation() => Material(
               Text(
                 'Lihat Rekomendasi',
                 style: TextStyle(
-                    fontFamily: 'Gelion',
                     fontSize: 17,
                     color: Colors.white,
                     fontWeight: FontWeight.w600),

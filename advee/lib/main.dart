@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'advee',
       theme: ThemeData(
-        fontFamily: 'Proxima Nova',
+        fontFamily: 'Gelion',
         scaffoldBackgroundColor: Palette.background,
       ),
       home: const HomePage(),

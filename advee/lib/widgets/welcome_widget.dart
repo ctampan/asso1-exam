@@ -21,18 +21,21 @@ Widget welcomeWidget(BuildContext context) => Stack(
             children: [
               const Text(
                 'Hi, Agus Suseno',
-                style:
-                TextStyle(color: Colors.white, fontSize: 30),
-              ),
+                    style: TextStyle(
+                        fontFamily: 'Proxima Nova',
+                        color: Colors.white,
+                        fontSize: 30),
+                  ),
               const SizedBox(
                 height: 15,
               ),
               const Text(
                 'Moderate Investor',
                 style: TextStyle(
-                    color: Palette.yellowText,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 20),
+                    fontFamily: 'Proxima Nova',
+                        color: Palette.yellowText,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20),
               ),
               const SizedBox(
                 height: 20,
@@ -59,7 +62,10 @@ Widget welcomeWidget(BuildContext context) => Stack(
                       child: const Text(
                         'Financial Check-Up',
                         style: TextStyle(
-                            color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                            fontFamily: 'Proxima Nova',
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600),
                       ))),
             ],
           ),
