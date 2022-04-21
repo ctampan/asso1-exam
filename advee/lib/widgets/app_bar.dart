@@ -14,7 +14,7 @@ AppBar appBar(BuildContext context) => AppBar(
           width: MediaQuery.of(context).size.width * 0.3,
         ),
       ),
-      actions: [_buildLeading()],
+      actions: [_buildAction()],
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
               bottom:
