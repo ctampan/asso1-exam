@@ -33,6 +33,9 @@ Widget protection(BuildContext context) => cardBody(
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
+          const SizedBox(
+            width: 5,
+          ),
           Padding(
               padding: const EdgeInsets.only(right: 15, top: 5),
               child: Column(children: [

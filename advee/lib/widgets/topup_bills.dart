@@ -31,6 +31,7 @@ Widget topupBills(BuildContext context) => cardBody(
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [
+            const SizedBox(width: 5,),
             for (final item in _topupBillsList)
               Padding(
                 padding: const EdgeInsets.only(right: 15, top: 5),

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/bottom_navbar.dart';
 import '../widgets/learn_invest.dart';
+import '../widgets/recent_transaction.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,6 +50,10 @@ class HomePage extends StatelessWidget {
               topupBills(context),
               const SizedBox(
                 height: 15,
+              ),
+              recentTransaction(context),
+              const SizedBox(
+                height: 25,
               ),
             ],
           ),
