@@ -1,7 +1,8 @@
+import 'package:advee/theme/palette.dart';
 import 'package:advee/widgets/cash_investment.dart';
 import 'package:advee/widgets/recommendation_widget.dart';
+import 'package:advee/widgets/simulate_investment.dart';
 import 'package:advee/widgets/welcome_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_bar.dart';
@@ -24,7 +25,8 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const CashInvestment()
+              const CashInvestment(),
+              simulateInvestment(context),
             ],
           ),
         ),

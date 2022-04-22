@@ -1,8 +1,10 @@
 import 'package:advee/theme/palette.dart';
+import 'package:advee/widgets/my_investment_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../types/Bank.dart';
+import 'my_cash_menu.dart';
 
 class CashInvestment extends StatefulWidget {
   const CashInvestment({Key? key}) : super(key: key);
@@ -36,10 +38,12 @@ class CashInvestment extends StatefulWidget {
 
 class _CashInvestmentState extends State<CashInvestment> {
   String _activeTab = CashInvestment._tabList[0];
+  double _extraHeight = 0;
 
   _handleChangeTab(String tabName) {
     setState(() {
       _activeTab = tabName;
+      _extraHeight = tabName == 'My Investment' ? 70 : 0;
     });
   }
 
@@ -47,11 +51,11 @@ class _CashInvestmentState extends State<CashInvestment> {
   Widget build(BuildContext context) {
     return SizedBox(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: 350,
+        height: 320 + _extraHeight,
         child: Stack(
           clipBehavior: Clip.hardEdge,
           children: [
-            _menu(context: context, activeTab: _activeTab),
+            _menu(context: context, activeTab: _activeTab, extraHeight: _extraHeight),
             Row(
               children: [
                 for (final tab in CashInvestment._tabList)
@@ -98,11 +102,11 @@ Widget _tab(
           ),
         ));
 
-Widget _menu({required BuildContext context, required String activeTab}) =>
+Widget _menu({required BuildContext context, required String activeTab, required double extraHeight}) =>
     Positioned(
         top: 39,
         width: MediaQuery.of(context).size.width * 0.9,
-        height: 251,
+        height: 251 + extraHeight,
         child: Container(
           decoration: BoxDecoration(
               color: activeTab == "My Cash" ? Colors.white : Palette.blue,
@@ -115,158 +119,6 @@ Widget _menu({required BuildContext context, required String activeTab}) =>
                     blurRadius: 6,
                     offset: const Offset(6, 7))
               ]),
-          child: activeTab == "My Cash" ? _myCashMenu() : null,
+          child: activeTab == "My Cash" ? myCashMenu(CashInvestment._bankList) : myInvestmentMenu(),
         ));
 
-Widget _myCashMenu() => Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-            padding: const EdgeInsets.only(left: 7),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/credit_card.png',
-                      height: 25,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Text(
-                      'My Cash',
-                      style: TextStyle(
-                          color: Palette.purpleText,
-                          fontWeight: FontWeight.w600,
-                          height: 1.5),
-                    )
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'Detail',
-                      style: TextStyle(
-                          color: Palette.purpleText,
-                          fontWeight: FontWeight.w600,
-                          height: 1.5),
-                    ),
-                    SizedBox(
-                      width: 7,
-                    ),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: Palette.purpleText,
-                      size: 15,
-                    )
-                  ],
-                )
-              ],
-            )),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 7, horizontal: 7),
-          child: Text(
-            'Rp. 15.650.000',
-            style: TextStyle(
-                fontWeight: FontWeight.w700,
-                color: Palette.purpleTextDark,
-                fontSize: 18),
-          ),
-        ),
-        Row(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: 127,
-              height: 22,
-              decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xffe2e2e2)),
-                  borderRadius: const BorderRadius.all(Radius.circular(20))),
-              child: const Text(
-                'On 3 Saving Accounts',
-                style: TextStyle(
-                    color: Palette.purpleText,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    height: 1.5),
-              ),
-            ),
-            Container(
-              color: const Color(0xffe2e2e2),
-              height: 1.25,
-              width: 178,
-            )
-          ],
-        ),
-        const SizedBox(
-          height: 7,
-        ),
-        for (final bank in CashInvestment._bankList) _bankBalance(bank)
-      ],
-    ));
-
-Widget _bankBalance(Bank bank) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 7),
-    child: Row(
-      children: [
-        Container(
-          width: 60,
-          height: 30,
-          decoration: BoxDecoration(
-              color: bank.color,
-              borderRadius: const BorderRadius.all(Radius.circular(5))),
-          child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Image.asset(
-                bank.logoPath,
-              )),
-        ),
-        const SizedBox(
-          width: 7,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              bank.name,
-              style: const TextStyle(
-                  color: Palette.purpleTextDark,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            Text(
-              bank.number,
-              style: const TextStyle(
-                  color: Palette.purpleText,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400),
-            )
-          ],
-        ),
-        const Spacer(),
-        Text(
-          _formatBalance(bank.balance),
-          style: const TextStyle(
-              color: Palette.purpleTextDark,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              height: 2.5),
-        )
-      ],
-    ));
-
-String _formatBalance(int balance) {
-  var formatter =
-      NumberFormat.currency(locale: "id_ID", symbol: "Rp. ", decimalDigits: 0);
-
-  return formatter.format(balance);
-}

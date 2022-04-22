@@ -44,10 +44,10 @@ Widget recommendationWidget(BuildContext context) => Padding(
             ),
             Positioned(
                 bottom: 5,
-                right: 20,
+                right: 30,
                 child: Image.asset(
-                  'assets/images/invest.png',
-                  width: 100,
+                  'assets/images/invest_illustration.png',
+                  width: 110,
                 )),
           ],
         ),
