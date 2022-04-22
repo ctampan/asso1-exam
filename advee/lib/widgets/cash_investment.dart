@@ -1,7 +1,6 @@
 import 'package:advee/theme/palette.dart';
 import 'package:advee/widgets/my_investment_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../types/Bank.dart';
 import 'my_cash_menu.dart';

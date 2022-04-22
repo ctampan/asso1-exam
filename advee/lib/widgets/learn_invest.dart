@@ -1,29 +1,23 @@
 import 'package:advee/theme/palette.dart';
+import 'package:advee/widgets/card_header.dart';
 import 'package:flutter/material.dart';
+
+import 'card_decoration.dart';
 
 Widget learnInvest(BuildContext context) => Container(
       width: MediaQuery.of(context).size.width * 0.9,
-      height: 280,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                spreadRadius: 1,
-                blurRadius: 6,
-                offset: const Offset(6, 7))
-          ]),
+      height: 285,
+      decoration: cardDecoration(),
       child: Padding(
           padding: const EdgeInsets.only(top: 30, left: 20),
           child: Column(
             children: [
-              _learnInvestHeader(),
+              cardHeader(title: 'Learn How To Invest', detail: 'View All'),
               const SizedBox(
                 height: 15,
               ),
               SizedBox(
-                  height: 200,
+                  height: 205,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
@@ -78,38 +72,6 @@ Widget learnInvest(BuildContext context) => Container(
           )),
     );
 
-Widget _learnInvestHeader() => Row(
-      children: const [
-        Text(
-          'Learn How To Invest',
-          style: TextStyle(
-              color: Palette.purpleText,
-              fontWeight: FontWeight.w700,
-              fontSize: 13),
-        ),
-        Spacer(),
-        Text(
-          'View All',
-          style: TextStyle(
-              color: Palette.purpleTextDark,
-              fontWeight: FontWeight.w700,
-              fontSize: 13,
-              height: 1.4),
-        ),
-        SizedBox(
-          width: 5,
-        ),
-        Icon(
-          Icons.arrow_forward_ios,
-          size: 13,
-          color: Palette.purpleTextDark,
-        ),
-        SizedBox(
-          width: 20,
-        )
-      ],
-    );
-
 Widget _learnCard(
         {required Widget image,
         required String text1,
@@ -157,8 +119,9 @@ Widget _learnCard(
         Text(
           text1 + ' ' + text2,
           style: const TextStyle(
-            fontSize: 11,
-              fontWeight: FontWeight.w500, color: Palette.purpleTextDark),
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: Palette.purpleTextDark),
         )
       ],
     );
