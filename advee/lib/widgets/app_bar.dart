@@ -6,7 +6,7 @@ import '../theme/palette.dart';
 
 AppBar appBar(BuildContext context) => AppBar(
       automaticallyImplyLeading: false,
-      toolbarHeight: 75,
+      toolbarHeight: 70,
       leading: _buildLeading(),
       title: Center(
         child: Image.asset(
@@ -18,7 +18,7 @@ AppBar appBar(BuildContext context) => AppBar(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
               bottom:
-                  Radius.elliptical(MediaQuery.of(context).size.width, 25))),
+                  Radius.elliptical(MediaQuery.of(context).size.width, 20))),
       elevation: 0.0,
       backgroundColor: Palette.blue,
     );

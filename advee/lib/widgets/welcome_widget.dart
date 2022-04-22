@@ -8,24 +8,24 @@ Widget welcomeWidget(BuildContext context) => Stack(
     ClipPath(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 320,
-        color: Palette.blue,
-      ),
+            height: 310,
+            color: Palette.blue,
+          ),
       clipper: WelcomeContainerClipper(),
     ),
     Padding(
-        padding: const EdgeInsets.only(top: 120),
-        child: Center(
-          child: Column(
-            children: [
-              const Text(
-                'Hi, Agus Suseno',
+        padding: const EdgeInsets.only(top: 115),
+            child: Center(
+              child: Column(
+                children: [
+                  const Text(
+                    'Hi, Agus Suseno',
                     style: TextStyle(
                         fontFamily: 'Proxima Nova',
                         color: Colors.white,
                         fontSize: 30),
                   ),
-              const SizedBox(
+                  const SizedBox(
                 height: 15,
               ),
               const Text(

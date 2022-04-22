@@ -8,6 +8,7 @@ import 'package:advee/widgets/welcome_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_bar.dart';
+import '../widgets/bottom_navbar.dart';
 import '../widgets/learn_invest.dart';
 
 class HomePage extends StatelessWidget {
@@ -53,6 +54,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: bottomNavigationBar(),
     );
   }
 }

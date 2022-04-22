@@ -5,6 +5,7 @@ class Palette {
   static const blue = Color(0xff2b57e6);
   static const gray = Color(0xffd6dcee);
   static const green = Color(0xff30ff2c);
+  static const inactive = Color(0xffced4e9);
   static const orange = Color(0xffff5500);
   static const purpleText = Color(0xff64709f);
   static const purpleTextDark = Color(0xff2f336b);
