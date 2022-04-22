@@ -46,6 +46,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
   badges: ^2.0.2
+  intl: ^0.17.0
   font_awesome_flutter: ^10.1.0
 
 # For information on the generic Dart part of this file, see the
@@ -94,14 +95,24 @@ flutter:
   fonts:
     - family: Proxima Nova
       fonts:
-        - asset: assets/fonts/Proxima-Nova.ttf
+        - asset: assets/fonts/Proxima Nova/Proxima-Nova.ttf
     - family: Gelion
       fonts:
-        - asset: assets/fonts/Gelion SemiBold.ttf
+        - asset: assets/fonts/Gelion/Gelion SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/Gelion Medium.ttf
+        - asset: assets/fonts/Gelion/Gelion Medium.ttf
           weight: 500
-        - asset: assets/fonts/Gelion Regular.ttf
+        - asset: assets/fonts/Gelion/Gelion Regular.ttf
           weight: 400
-        - asset: assets/fonts/Gelion Light.ttf
+        - asset: assets/fonts/Gelion/Gelion Light.ttf
+          weight: 300
+    - family: Avant Garde
+      fonts:
+        - asset: assets/fonts/Avant Garde/ITCAvantGardeStd-Demi.otf
+          weight: 600
+        - asset: assets/fonts/Avant Garde/ITCAvantGardeStd-Md.otf
+          weight: 500
+        - asset: assets/fonts/Avant Garde/ITCAvantGardeStd-Bk.otf
+          weight: 400
+        - asset: assets/fonts/Avant Garde/ITCAvantGardeStd-XLt.otf
           weight: 300

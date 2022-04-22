@@ -12,11 +12,11 @@ Widget recommendationWidget(BuildContext context) => Padding(
               borderRadius: BorderRadius.circular(15),
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
-                height: 130,
+                height: 135,
                 color: Palette.blue,
                 child: Stack(
                   children: [
-                    Positioned(left: 20, bottom: 30, child: _circle2(60)),
+                    Positioned(left: 20, top: 40, child: _circle2(60)),
                     Positioned(left: -45, top: -45, child: _circle1(125)),
                   ],
                 ),
@@ -30,12 +30,13 @@ Widget recommendationWidget(BuildContext context) => Padding(
                   const Text(
                     'Deposit anda di Bank Mandiri akan segera jatuh tempo dalam 6 hari lagi, click untuk melihat rekomendasi alokasi.',
                     style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 11,
+                        height: 2,
                         color: Colors.white,
                         fontWeight: FontWeight.w300),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   _buildClickableRecommendation()
                 ],
@@ -112,15 +113,15 @@ Widget _buildClickableRecommendation() => Material(
       child: InkWell(
         onTap: () {},
         child: SizedBox(
-          width: 156,
+          width: 160,
           child: Row(
             children: const [
               Text(
                 'Lihat Rekomendasi',
                 style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     color: Colors.white,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w500),
               ),
               SizedBox(
                 width: 5,

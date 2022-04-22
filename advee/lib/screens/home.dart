@@ -1,3 +1,4 @@
+import 'package:advee/widgets/cash_investment.dart';
 import 'package:advee/widgets/recommendation_widget.dart';
 import 'package:advee/widgets/welcome_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +18,14 @@ class HomePage extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [welcomeWidget(context), recommendationWidget(context)],
+            children: [
+              welcomeWidget(context),
+              recommendationWidget(context),
+              const SizedBox(
+                height: 10,
+              ),
+              const CashInvestment()
+            ],
           ),
         ),
       ),
