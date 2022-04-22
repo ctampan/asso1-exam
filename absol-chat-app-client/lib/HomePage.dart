@@ -88,7 +88,6 @@ class _HomeState extends State<HomePage> {
                                   fontSize: 30,
                                   color: theme.indicatorColor),
                               onSubmitted: (String value) async {
-                                log(value);
                                 await widget.storage.setItem('name', value);
                               },
                             ),

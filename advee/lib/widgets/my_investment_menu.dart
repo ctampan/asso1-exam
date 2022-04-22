@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/Palette.dart';
+import 'button.dart';
 
 Widget myInvestmentMenu() => Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
@@ -109,29 +110,13 @@ Widget myInvestmentMenu() => Padding(
         const SizedBox(
           height: 24,
         ),
-        Container(
-            height: 50,
-            width: 125,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                  colors: [Palette.yellowDark, Palette.yellow]),
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
-                ),
-                child: const Text(
-                  'Invest',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      height: 1.25),
-                ))),
+        button(height: 50, width: 125, text: const Text(
+          'Invest',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              height: 1.25),
+        )),
       ],
     ));

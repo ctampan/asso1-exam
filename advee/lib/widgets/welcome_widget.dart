@@ -1,8 +1,7 @@
-import 'package:advee/widgets/welcome_container_clipper.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/Palette.dart';
+import 'button.dart';
 
 Widget welcomeWidget(BuildContext context) => Stack(
   children: [
@@ -30,45 +29,46 @@ Widget welcomeWidget(BuildContext context) => Stack(
                 height: 15,
               ),
               const Text(
-                'Moderate Investor',
-                style: TextStyle(
-                    fontFamily: 'Proxima Nova',
+                    'Moderate Investor',
+                    style: TextStyle(
+                        fontFamily: 'Proxima Nova',
                         color: Palette.yellowText,
                         fontWeight: FontWeight.w700,
                         fontSize: 20),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                  height: 40,
-                  width: 175,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(colors: [
-                      Palette.yellowDark,
-                      Palette.yellow
-                    ]),
-                    borderRadius: BorderRadius.circular(50),
                   ),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                            BorderRadius.circular(50)),
-                      ),
-                      child: const Text(
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  button(
+                      height: 40,
+                      width: 175,
+                      text: const Text(
                         'Financial Check-Up',
                         style: TextStyle(
                             fontFamily: 'Proxima Nova',
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                      ))),
-            ],
-          ),
-        )),
-  ],
-);
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      )),
+                ],
+              ),
+            )),
+      ],
+    );
+
+class WelcomeContainerClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 50);
+    path.quadraticBezierTo(
+        size.width / 2, size.height - 15, size.width, size.height - 50);
+    path.lineTo(size.width, 0);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}

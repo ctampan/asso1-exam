@@ -3,17 +3,17 @@ import 'package:advee/widgets/card_body.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../types/Protection.dart';
+import '../types/SquareCarousellItem.dart';
 
 const _protectionList = [
-  Protection(
+  SquareItem(
       logoPath: 'assets/images/manulife.png', name: 'Asuransi Jiwa Manulife'),
-  Protection(
+  SquareItem(
       logoPath: 'assets/images/prudential.png',
       name: 'Jaminan Penyakit Kritis Prudential'),
-  Protection(
+  SquareItem(
       logoPath: 'assets/images/allianz.png', name: 'Dana Pensiun Allianz'),
-  Protection(
+  SquareItem(
       logoPath: 'assets/images/car.png', name: 'Asuransi Mobil Auto 2000'),
 ];
 
@@ -77,7 +77,7 @@ Widget protection(BuildContext context) => cardBody(
       ),
     ));
 
-_protectionCard({required String logoPath, required String name}) =>
+Widget _protectionCard({required String logoPath, required String name}) =>
     Column(children: [
       Container(
           height: 65,
@@ -94,6 +94,7 @@ _protectionCard({required String logoPath, required String name}) =>
           child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.all(0),
                 primary: Colors.white,
                 shadowColor: Colors.transparent,
                 shape: RoundedRectangleBorder(
@@ -101,7 +102,7 @@ _protectionCard({required String logoPath, required String name}) =>
               ),
               child: Image.asset(
                 logoPath,
-                height: 40,
+                height: 35,
               ))),
       const SizedBox(
         height: 7,
