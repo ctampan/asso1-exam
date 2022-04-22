@@ -6,6 +6,7 @@ import 'package:advee/widgets/welcome_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_bar.dart';
+import '../widgets/learn_invest.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,6 +28,10 @@ class HomePage extends StatelessWidget {
               ),
               const CashInvestment(),
               simulateInvestment(context),
+              const SizedBox(
+                height: 20,
+              ),
+              learnInvest(context),
             ],
           ),
         ),
