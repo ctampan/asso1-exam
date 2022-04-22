@@ -1,76 +1,64 @@
 import 'package:advee/theme/palette.dart';
-import 'package:advee/widgets/card_header.dart';
+import 'package:advee/widgets/card_body.dart';
 import 'package:flutter/material.dart';
 
-import 'card_decoration.dart';
-
-Widget learnInvest(BuildContext context) => Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      height: 285,
-      decoration: cardDecoration(),
-      child: Padding(
-          padding: const EdgeInsets.only(top: 30, left: 20),
-          child: Column(
-            children: [
-              cardHeader(title: 'Learn How To Invest', detail: 'View All'),
-              const SizedBox(
-                height: 15,
-              ),
-              SizedBox(
-                  height: 205,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.only(right: 15),
-                          child: _learnCard(
-                              image: Positioned(
-                                  bottom: 0,
-                                  right: -90,
-                                  child: Image.asset(
-                                    'assets/images/coin_plant_original.jpg',
-                                    colorBlendMode: BlendMode.multiply,
-                                    color: Palette.blue,
-                                    height: 145,
-                                  )),
-                              color: Palette.blue,
-                              text1: 'Investment',
-                              text2: '101')),
-                      Padding(
-                          padding: const EdgeInsets.only(right: 15),
-                          child: _learnCard(
-                              image: Positioned(
-                                  bottom: 10,
-                                  right: -35,
-                                  child: Image.asset(
-                                    'assets/images/money.png',
-                                    colorBlendMode: BlendMode.multiply,
-                                    color: Palette.yellowDark,
-                                    height: 70,
-                                  )),
-                              color: Palette.yellowDark,
-                              text1: 'How to',
-                              text2: 'buy & sell')),
-                      Padding(
-                          padding: const EdgeInsets.only(right: 15),
-                          child: _learnCard(
-                              image: Positioned(
-                                  bottom: 0,
-                                  right: -40,
-                                  child: Image.asset(
-                                    'assets/images/shield.png',
-                                    colorBlendMode: BlendMode.multiply,
-                                    color: Palette.orange,
-                                    height: 100,
-                                  )),
-                              color: Palette.orange,
-                              text1: 'Protect',
-                              text2: 'investment')),
-                    ],
-                  ))
-            ],
-          )),
-    );
+Widget learnInvest(BuildContext context) => cardBody(
+    context: context,
+    height: 285,
+    title: 'Learn How To Invest',
+    detail: 'View All',
+    body: SizedBox(
+        height: 205,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: _learnCard(
+                    image: Positioned(
+                        bottom: 0,
+                        right: -90,
+                        child: Image.asset(
+                          'assets/images/coin_plant_original.jpg',
+                          colorBlendMode: BlendMode.multiply,
+                          color: Palette.blue,
+                          height: 145,
+                        )),
+                    color: Palette.blue,
+                    text1: 'Investment',
+                    text2: '101')),
+            Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: _learnCard(
+                    image: Positioned(
+                        bottom: 10,
+                        right: -35,
+                        child: Image.asset(
+                          'assets/images/money.png',
+                          colorBlendMode: BlendMode.multiply,
+                          color: Palette.yellowDark,
+                          height: 70,
+                        )),
+                    color: Palette.yellowDark,
+                    text1: 'How to',
+                    text2: 'buy & sell')),
+            Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: _learnCard(
+                    image: Positioned(
+                        bottom: 0,
+                        right: -40,
+                        child: Image.asset(
+                          'assets/images/shield.png',
+                          colorBlendMode: BlendMode.multiply,
+                          color: Palette.orange,
+                          height: 100,
+                        )),
+                    color: Palette.orange,
+                    text1: 'Protect',
+                    text2: 'investment')),
+          ],
+        )));
 
 Widget _learnCard(
         {required Widget image,

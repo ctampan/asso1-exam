@@ -5,31 +5,31 @@ import 'package:flutter/material.dart';
 import '../types/Bank.dart';
 import 'my_cash_menu.dart';
 
+const List<Bank> _bankList = [
+  Bank(
+      name: 'Bank Mandiri',
+      number: 'XXXX XXXX XXXX 1324',
+      balance: 12000000,
+      logoPath: 'assets/images/bank_mandiri_white.png',
+      color: Palette.mandiri),
+  Bank(
+      name: 'Bank BCA',
+      number: 'XXXX XXXX XXXX 5637',
+      balance: 3000000,
+      logoPath: 'assets/images/bank_bca_white.png',
+      color: Palette.bca),
+  Bank(
+      name: 'OVO',
+      number: 'XXXX XXXX 6363',
+      balance: 10000000,
+      logoPath: 'assets/images/ovo_white.png',
+      color: Palette.ovo),
+];
+
 class CashInvestment extends StatefulWidget {
   const CashInvestment({Key? key}) : super(key: key);
 
   static const List<String> _tabList = ['My Cash', 'My Investment'];
-
-  static const List<Bank> _bankList = [
-    Bank(
-        name: 'Bank Mandiri',
-        number: 'XXXX XXXX XXXX 1324',
-        balance: 12000000,
-        logoPath: 'assets/images/bank_mandiri_white.png',
-        color: Palette.mandiri),
-    Bank(
-        name: 'Bank BCA',
-        number: 'XXXX XXXX XXXX 5637',
-        balance: 3000000,
-        logoPath: 'assets/images/bank_bca_white.png',
-        color: Palette.bca),
-    Bank(
-        name: 'OVO',
-        number: 'XXXX XXXX 6363',
-        balance: 10000000,
-        logoPath: 'assets/images/ovo_white.png',
-        color: Palette.ovo),
-  ];
 
   @override
   State<StatefulWidget> createState() => _CashInvestmentState();
@@ -113,11 +113,11 @@ Widget _menu({required BuildContext context, required String activeTab, required
                   const BorderRadius.vertical(bottom: Radius.circular(15)),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Colors.black.withOpacity(0.1),
                     spreadRadius: 1,
                     blurRadius: 6,
                     offset: const Offset(6, 7))
               ]),
-          child: activeTab == "My Cash" ? myCashMenu(CashInvestment._bankList) : myInvestmentMenu(),
+          child: activeTab == "My Cash" ? myCashMenu(_bankList) : myInvestmentMenu(),
         ));
 

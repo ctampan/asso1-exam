@@ -1,6 +1,6 @@
-import 'package:advee/theme/palette.dart';
 import 'package:advee/widgets/cash_investment.dart';
 import 'package:advee/widgets/investment_for_you.dart';
+import 'package:advee/widgets/protection.dart';
 import 'package:advee/widgets/recommendation_widget.dart';
 import 'package:advee/widgets/simulate_investment.dart';
 import 'package:advee/widgets/welcome_widget.dart';
@@ -37,6 +37,13 @@ class HomePage extends StatelessWidget {
                 height: 20,
               ),
               investmentForYou(context),
+              const SizedBox(
+                height: 20,
+              ),
+              protection(context),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

@@ -3,19 +3,22 @@ import 'package:flutter/material.dart';
 
 import '../theme/Palette.dart';
 
-Widget cardHeader({required String title, required String detail}) => Row(
-  children: [
-    Text(
-      title,
-      style: const TextStyle(
-          color: Palette.purpleText,
-          fontWeight: FontWeight.w700,
-          fontSize: 13),
-    ),
-    const Spacer(),
-    Text(
-      detail,
-      style: const TextStyle(
+Widget cardHeader(
+        {required String title, required String detail, Widget? additional}) =>
+    Row(
+      children: [
+        if (additional != null) additional,
+        Text(
+          title,
+          style: const TextStyle(
+              color: Palette.purpleText,
+              fontWeight: FontWeight.w700,
+              fontSize: 13),
+        ),
+        const Spacer(),
+        Text(
+          detail,
+          style: const TextStyle(
           color: Palette.purpleTextDark,
           fontWeight: FontWeight.w700,
           fontSize: 13,
