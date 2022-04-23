@@ -5,7 +5,16 @@ import 'package:http/http.dart' as http;
 import 'package:localstorage/localstorage.dart';
 import 'package:uuid/uuid.dart';
 
-Future<int> postEnterRandomChat(LocalStorage storage) async {
+class EnterDTO {
+  const EnterDTO({required this.status, required this.uuid, required this.name, required this.roomId});
+
+  final int status;
+  final String uuid;
+  final String name;
+  final String roomId;
+}
+
+Future<EnterDTO> postEnterRandomChat(LocalStorage storage) async {
   final url = Uri.parse(Constants.serverUrl + '/random-chat/join');
 
   var uuid = const Uuid().v4();
@@ -16,14 +25,18 @@ Future<int> postEnterRandomChat(LocalStorage storage) async {
 
   var response = await http.post(url, body: {'uuid': uuid, 'name': name});
 
+  String roomId = '';
+
   if (response.statusCode == 200) {
     Map<String, dynamic> data = json.decode(response.body);
 
+    roomId = data['roomId'];
+
     storage.setItem('currentRoom',
-        json.encode({'type': 'random', 'roomId': data['roomId']}));
+        json.encode({'type': 'random', 'roomId': roomId}));
   }
 
-  return response.statusCode;
+  return EnterDTO(status: response.statusCode, uuid: uuid, name: name, roomId: roomId);
 }
 
 Future<int> postLeaveRandomChat(LocalStorage storage) async {

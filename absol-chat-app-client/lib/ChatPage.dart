@@ -38,6 +38,10 @@ class _ChatPageState extends State<ChatPage> {
   late double keyboardHeight;
   late TextEditingController textController;
   late ScrollController scrollController;
+  late String uuid;
+  late String name;
+  late String roomId;
+  bool initialRender = true;
 
   scrollToBottom() {
     if (scrollController.hasClients) {
@@ -69,21 +73,6 @@ class _ChatPageState extends State<ChatPage> {
         String uuid = widget.storage.getItem('uuid');
         String roomId =
             json.decode(widget.storage.getItem('currentRoom'))['roomId'];
-
-        final url = Uri.parse(
-            Constants.serverUrl + '/random-chat/' + roomId + '/participants');
-        http.get(url).then((response) {
-          Map<String, dynamic> data = json.decode(response.body);
-
-          if (data != {}) {
-            var other =
-                data['participants'].where((person) => person['uuid'] != uuid);
-
-            setState(() {
-              otherName = other.isEmpty ? otherName : other.first['name'];
-            });
-          }
-        });
 
         socketIO.subscribe('receive_message_' + roomId, (jsonData) {
           Map<String, dynamic> data = json.decode(jsonData);
@@ -126,6 +115,37 @@ class _ChatPageState extends State<ChatPage> {
     });
 
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (initialRender) {
+      final args = ModalRoute.of(context)!.settings.arguments as RandomChatDTO;
+
+      setState(() {
+        uuid = args.uuid;
+        name = args.name;
+        roomId = args.roomId;
+        initialRender = false;
+      });
+
+      final url = Uri.parse(
+          Constants.serverUrl + '/random-chat/' + roomId + '/participants');
+      http.get(url).then((response) {
+        Map<String, dynamic> data = json.decode(response.body);
+
+        if (data != {}) {
+          var other =
+              data['participants'].where((person) => person['uuid'] != uuid);
+
+          setState(() {
+            otherName = other.isEmpty ? otherName : other.first['name'];
+          });
+        }
+      });
+    }
+
+    super.didChangeDependencies();
   }
 
   Widget buildSingleMessage(int index, LocalStorage storage) {

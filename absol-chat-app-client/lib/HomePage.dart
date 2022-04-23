@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:absol_chat_app_client/ChatPage.dart';
+import 'package:absol_chat_app_client/constants.dart';
 import 'package:absol_chat_app_client/services/RandomChat.service.dart';
 import 'package:absol_chat_app_client/widgets/error_alert.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +86,7 @@ class _HomeState extends State<HomePage> {
                                   fontWeight: FontWeight.w800,
                                   fontSize: 30,
                                   color: theme.indicatorColor),
-                              onSubmitted: (String value) async {
+                              onChanged: (String value) async {
                                 await widget.storage.setItem('name', value);
                               },
                             ),
@@ -110,14 +109,19 @@ class _HomeState extends State<HomePage> {
                           setState(() {
                             _randomButtonLoading = true;
                           });
-                          postEnterRandomChat(widget.storage).then((status) => {
-                                if (status != 200)
-                                  {errorAlert(context)}
-                                else
-                                  {
-                                    Navigator.pushNamed(
-                                        context, ChatPage.routeName)
-                                  },
+                          postEnterRandomChat(widget.storage)
+                              .then((response) => {
+                                    if (response.status != 200)
+                                      {errorAlert(context)}
+                                    else
+                                      {
+                                        Navigator.pushNamed(
+                                            context, ChatPage.routeName,
+                                            arguments: RandomChatDTO(
+                                                uuid: response.uuid,
+                                                name: response.name,
+                                                roomId: response.roomId))
+                                      },
                                 setState(() {
                                   _randomButtonLoading = false;
                                 })
