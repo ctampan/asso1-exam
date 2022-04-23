@@ -19,3 +19,22 @@
     color: var(--bw) !important;
   }
 }
+
+.avatarWrapper {
+  display: inline-block;
+  height: 40px !important;
+  width: 40px !important;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+
+.avatar {
+  display: inline-block;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  object-fit:cover;
+  text-align: center;
+}
