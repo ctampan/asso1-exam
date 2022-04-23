@@ -1,30 +1,33 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/image_path.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:advee/widgets/my_investment_menu.dart';
 import 'package:flutter/material.dart';
 
 import '../types/Bank.dart';
-import 'my_cash_menu.dart';
+import '../widgets/my_cash_menu.dart';
 
 const List<Bank> _bankList = [
   Bank(
       name: 'Bank Mandiri',
       number: 'XXXX XXXX XXXX 1324',
       balance: 12000000,
-      logoPath: 'assets/images/bank_mandiri_white.png',
-      color: Palette.mandiri),
+      logoPath: ImagePaths.bankMandiriWhite,
+      color: Palettes.mandiri),
   Bank(
       name: 'Bank BCA',
       number: 'XXXX XXXX XXXX 5637',
       balance: 3000000,
-      logoPath: 'assets/images/bank_bca_white.png',
-      color: Palette.bca),
+      logoPath: ImagePaths.bankBCAWhite,
+      color: Palettes.bca),
   Bank(
       name: 'OVO',
       number: 'XXXX XXXX 6363',
       balance: 10000000,
-      logoPath: 'assets/images/ovo_white.png',
-      color: Palette.ovo),
+      logoPath: ImagePaths.ovoWhite,
+      color: Palettes.ovo),
 ];
+
+Widget cashInvestmentSection() => const CashInvestment();
 
 class CashInvestment extends StatefulWidget {
   const CashInvestment({Key? key}) : super(key: key);
@@ -84,7 +87,7 @@ Widget _tab(
           height: 40,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-              color: isActive ? Palette.blue : Palette.gray,
+              color: isActive ? Palettes.blue : Palettes.gray,
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15))),
           child: Text(
@@ -95,8 +98,8 @@ Widget _tab(
                     color: Colors.white,
                     fontSize: 15)
                 : const TextStyle(
-                    fontWeight: FontWeight.w300,
-                    color: Palette.purpleTextDark,
+                fontWeight: FontWeight.w300,
+                    color: Palettes.purpleTextDark,
                     fontSize: 15),
           ),
         ));
@@ -108,7 +111,7 @@ Widget _menu({required BuildContext context, required String activeTab, required
         height: 251 + extraHeight,
         child: Container(
           decoration: BoxDecoration(
-              color: activeTab == "My Cash" ? Colors.white : Palette.blue,
+              color: activeTab == "My Cash" ? Colors.white : Palettes.blue,
               borderRadius:
                   const BorderRadius.vertical(bottom: Radius.circular(15)),
               boxShadow: [

@@ -1,29 +1,26 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/image_path.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:advee/widgets/card_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../types/SquareCarousellItem.dart';
 
 const _protectionList = [
+  SquareItem(logoPath: ImagePaths.manulife, name: 'Asuransi Jiwa Manulife'),
   SquareItem(
-      logoPath: 'assets/images/manulife.png', name: 'Asuransi Jiwa Manulife'),
-  SquareItem(
-      logoPath: 'assets/images/prudential.png',
+      logoPath: ImagePaths.prudential,
       name: 'Jaminan Penyakit Kritis Prudential'),
-  SquareItem(
-      logoPath: 'assets/images/allianz.png', name: 'Dana Pensiun Allianz'),
-  SquareItem(
-      logoPath: 'assets/images/car.png', name: 'Asuransi Mobil Auto 2000'),
+  SquareItem(logoPath: ImagePaths.allianz, name: 'Dana Pensiun Allianz'),
+  SquareItem(logoPath: ImagePaths.car, name: 'Asuransi Mobil Auto 2000'),
 ];
 
-Widget protection(BuildContext context) => cardBody(
+Widget protectionSection(BuildContext context) => cardBody(
     context: context,
     height: 185,
     icon: Padding(
         padding: const EdgeInsets.only(right: 5),
         child: Image.asset(
-          'assets/images/protection.png',
+          ImagePaths.protection,
           height: 25,
         )),
     title: 'Protection',
@@ -44,7 +41,7 @@ Widget protection(BuildContext context) => cardBody(
                     width: 65,
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                          colors: [Palette.yellowDark, Palette.yellow]),
+                          colors: [Palettes.yellowDark, Palettes.yellow]),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: ElevatedButton(
@@ -56,7 +53,7 @@ Widget protection(BuildContext context) => cardBody(
                               borderRadius: BorderRadius.circular(15)),
                         ),
                         child: Image.asset(
-                          'assets/images/plus.png',
+                          ImagePaths.plus,
                           height: 25,
                         ))),
                 const SizedBox(
@@ -67,7 +64,7 @@ Widget protection(BuildContext context) => cardBody(
                   style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
-                      color: Palette.purpleTextDark),
+                      color: Palettes.purpleTextDark),
                 )
               ])),
           for (final protection in _protectionList)
@@ -117,7 +114,7 @@ Widget _protectionCard({required String logoPath, required String name}) =>
             textAlign: TextAlign.center,
             style: const TextStyle(
                 fontSize: 7,
-                color: Palette.purpleText,
+                color: Palettes.purpleText,
                 fontWeight: FontWeight.w600,
                 height: 1.3),
           ))

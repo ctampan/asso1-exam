@@ -67,7 +67,17 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
+    - assets/images/appbar/
+    - assets/images/building/
+    - assets/images/cash_investment/
+    - assets/images/cash_investment/banks/
+    - assets/images/invite_friends/
+    - assets/images/learn_invest/
     - assets/images/navbar/
+    - assets/images/protection/
+    - assets/images/quotes/
+    - assets/images/recommendation/
+    - assets/images/topup_bills/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

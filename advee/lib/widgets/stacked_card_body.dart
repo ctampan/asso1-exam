@@ -1,13 +1,13 @@
+import 'package:advee/designs/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../theme/Palette.dart';
 
 Widget stackedCardBody(
         {required double height,
         required double width,
         required List<Widget> contents,
-        required List<Widget> clippedContents, Color? color}) =>
+        required List<Widget> clippedContents,
+        Color? color}) =>
     Stack(
       alignment: Alignment.topCenter,
       children: [
@@ -16,7 +16,7 @@ Widget stackedCardBody(
           child: Container(
             width: width,
             height: height,
-            color: color ?? Palette.blue,
+            color: color ?? Palettes.blue,
             child: Stack(
               children: clippedContents,
             ),

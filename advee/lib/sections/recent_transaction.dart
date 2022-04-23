@@ -1,10 +1,9 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:advee/widgets/card_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Widget recentTransaction(BuildContext context) => cardBody(
+Widget recentTransactionSection(BuildContext context) => cardBody(
     context: context,
     height: 240,
     icon: const Padding(
@@ -12,7 +11,7 @@ Widget recentTransaction(BuildContext context) => cardBody(
         child: FaIcon(
           FontAwesomeIcons.clock,
           size: 22,
-          color: Palette.purpleText,
+          color: Palettes.purpleText,
         )),
     title: 'Recent Transaction',
     detail: 'View All',
@@ -31,7 +30,7 @@ Widget recentTransaction(BuildContext context) => cardBody(
             const Divider(
               height: 40,
               thickness: 1,
-              color: Palette.gray,
+              color: Palettes.gray,
             ),
             _transaction(
                 title: 'Internet Bill',
@@ -57,7 +56,7 @@ Widget _transaction(
               style: const TextStyle(
                   fontSize: 12.5,
                   letterSpacing: 0.25,
-                  color: Palette.purpleTextDark,
+                  color: Palettes.purpleTextDark,
                   fontWeight: FontWeight.w600),
             ),
             if (isScheduled)
@@ -65,7 +64,7 @@ Widget _transaction(
                 'Scheduled Payment',
                 style: TextStyle(
                     fontSize: 11,
-                    color: Palette.yellowText,
+                    color: Palettes.yellowText,
                     fontWeight: FontWeight.w600),
               )
           ],
@@ -81,7 +80,7 @@ Widget _transaction(
               style: const TextStyle(
                   fontSize: 10,
                   letterSpacing: 0.25,
-                  color: Palette.purpleText,
+                  color: Palettes.purpleText,
                   fontWeight: FontWeight.w500),
             ),
             Text(
@@ -89,7 +88,7 @@ Widget _transaction(
               style: const TextStyle(
                   fontSize: 13,
                   letterSpacing: 0.25,
-                  color: Palette.purpleTextDark,
+                  color: Palettes.purpleTextDark,
                   fontWeight: FontWeight.w600),
             )
           ],

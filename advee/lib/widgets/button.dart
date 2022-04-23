@@ -1,15 +1,14 @@
+import 'package:advee/designs/palette.dart';
 import 'package:flutter/material.dart';
-
-import '../theme/Palette.dart';
 
 Widget button({required double height, required double width, required Text text}) => Container(
     height: height,
     width: width,
     decoration: BoxDecoration(
       gradient: const LinearGradient(
-          colors: [Palette.yellowDark, Palette.yellow]),
-      borderRadius: BorderRadius.circular(50),
-    ),
+              colors: [Palettes.yellowDark, Palettes.yellow]),
+          borderRadius: BorderRadius.circular(50),
+        ),
     child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(

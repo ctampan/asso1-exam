@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class Palette {
+class Palettes {
   static const background = Color(0xffedf0f9);
   static const blue = Color(0xff2b57e6);
   static const gray = Color(0xffd6dcee);

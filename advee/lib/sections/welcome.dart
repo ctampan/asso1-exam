@@ -1,20 +1,20 @@
+import 'package:advee/designs/palette.dart';
 import 'package:flutter/material.dart';
 
-import '../theme/Palette.dart';
-import 'button.dart';
+import '../widgets/button.dart';
 
-Widget welcomeWidget(BuildContext context) => Stack(
-  children: [
-    ClipPath(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
+Widget welcomeSection(BuildContext context) => Stack(
+      children: [
+        ClipPath(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
             height: 300,
-            color: Palette.blue,
+            color: Palettes.blue,
           ),
-      clipper: WelcomeContainerClipper(),
-    ),
-    Padding(
-        padding: const EdgeInsets.only(top: 115),
+          clipper: WelcomeContainerClipper(),
+        ),
+        Padding(
+            padding: const EdgeInsets.only(top: 115),
             child: Center(
               child: Column(
                 children: [
@@ -26,13 +26,13 @@ Widget welcomeWidget(BuildContext context) => Stack(
                         fontSize: 30),
                   ),
                   const SizedBox(
-                height: 15,
-              ),
-              const Text(
+                    height: 15,
+                  ),
+                  const Text(
                     'Moderate Investor',
                     style: TextStyle(
                         fontFamily: 'Proxima Nova',
-                        color: Palette.yellowText,
+                        color: Palettes.yellowText,
                         fontWeight: FontWeight.w700,
                         fontSize: 20),
                   ),

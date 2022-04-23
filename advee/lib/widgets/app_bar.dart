@@ -1,8 +1,7 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/image_path.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-
-import '../theme/palette.dart';
 
 AppBar appBar(BuildContext context) => AppBar(
       automaticallyImplyLeading: false,
@@ -10,7 +9,7 @@ AppBar appBar(BuildContext context) => AppBar(
       leading: _buildLeading(),
       title: Center(
         child: Image.asset(
-          'assets/images/logo.png',
+          ImagePaths.logo,
           width: MediaQuery.of(context).size.width * 0.3,
         ),
       ),
@@ -20,7 +19,7 @@ AppBar appBar(BuildContext context) => AppBar(
               bottom:
                   Radius.elliptical(MediaQuery.of(context).size.width, 20))),
       elevation: 0.0,
-      backgroundColor: Palette.blue,
+      backgroundColor: Palettes.blue,
     );
 
 Widget _buildLeading() => Transform.translate(
@@ -28,10 +27,10 @@ Widget _buildLeading() => Transform.translate(
     child: Padding(
         padding: const EdgeInsets.all(10),
         child: CircleAvatar(
-          backgroundColor: Palette.yellow,
+          backgroundColor: Palettes.yellow,
           child: ClipOval(
               child: Image.asset(
-            "assets/images/avatar.jpg",
+            ImagePaths.avatar,
             width: 33,
           )),
         )));

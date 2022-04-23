@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:advee/designs/image_path.dart';
 import 'package:flutter/material.dart';
 
-import '../theme/Palette.dart';
 import 'button.dart';
 
 Widget myInvestmentMenu() => Padding(
@@ -13,7 +12,7 @@ Widget myInvestmentMenu() => Padding(
           children: [
             Row(children: [
               Image.asset(
-                'assets/images/invest_icon.png',
+                ImagePaths.investLeaf,
                 height: 20,
               ),
               const SizedBox(
@@ -65,7 +64,7 @@ Widget myInvestmentMenu() => Padding(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/triangle_green.png',
+                ImagePaths.triangleGreen,
                 width: 12,
               ),
               const SizedBox(

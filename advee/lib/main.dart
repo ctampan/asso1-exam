@@ -1,5 +1,5 @@
+import 'package:advee/designs/palette.dart';
 import 'package:advee/screens/home.dart';
-import 'package:advee/theme/Palette.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'advee',
       theme: ThemeData(
         fontFamily: 'Avant Garde',
-        scaffoldBackgroundColor: Palette.background,
+        scaffoldBackgroundColor: Palettes.background,
       ),
       home: const HomePage(),
     );

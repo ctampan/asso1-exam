@@ -1,17 +1,18 @@
-import 'package:advee/widgets/cash_investment.dart';
-import 'package:advee/widgets/investment_for_you.dart';
-import 'package:advee/widgets/invite_friends.dart';
-import 'package:advee/widgets/protection.dart';
-import 'package:advee/widgets/recommendation_widget.dart';
-import 'package:advee/widgets/simulate_investment.dart';
-import 'package:advee/widgets/topup_bills.dart';
-import 'package:advee/widgets/welcome_widget.dart';
+import 'package:advee/sections/cash_investment.dart';
+import 'package:advee/sections/investment_for_you.dart';
+import 'package:advee/sections/invite_friends.dart';
+import 'package:advee/sections/protection.dart';
+import 'package:advee/sections/quotes.dart';
+import 'package:advee/sections/recommendation.dart';
+import 'package:advee/sections/simulate_investment.dart';
+import 'package:advee/sections/topup_bills.dart';
+import 'package:advee/sections/welcome.dart';
 import 'package:flutter/material.dart';
 
+import '../sections/learn_invest.dart';
+import '../sections/recent_transaction.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/bottom_navbar.dart';
-import '../widgets/learn_invest.dart';
-import '../widgets/recent_transaction.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,40 +27,41 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              welcomeWidget(context),
-              recommendationWidget(context),
+              welcomeSection(context),
+              recommendationSection(context),
               const SizedBox(
                 height: 10,
               ),
-              const CashInvestment(),
-              simulateInvestment(context),
+              cashInvestmentSection(),
+              simulateInvestmentSection(context),
               const SizedBox(
                 height: 20,
               ),
-              learnInvest(context),
+              learnInvestSection(context),
               const SizedBox(
                 height: 25,
               ),
-              investmentForYou(context),
+              investmentForYouSection(context),
               const SizedBox(
                 height: 15,
               ),
-              protection(context),
+              protectionSection(context),
               const SizedBox(
                 height: 15,
               ),
-              topupBills(context),
+              topupBillsSection(context),
               const SizedBox(
                 height: 15,
               ),
-              recentTransaction(context),
+              recentTransactionSection(context),
               const SizedBox(
                 height: 25,
               ),
-              inviteFriends(context),
+              inviteFriendsSection(context),
               const SizedBox(
-                height: 25,
+                height: 35,
               ),
+              quotesSection(context),
             ],
           ),
         ),

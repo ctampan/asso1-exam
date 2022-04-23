@@ -1,9 +1,10 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/image_path.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:advee/widgets/button.dart';
 import 'package:advee/widgets/stacked_card_body.dart';
 import 'package:flutter/material.dart';
 
-Widget inviteFriends(BuildContext context) => Column(
+Widget inviteFriendsSection(BuildContext context) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
@@ -11,7 +12,7 @@ Widget inviteFriends(BuildContext context) => Column(
           style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w600,
-              color: Palette.purpleTextDark),
+              color: Palettes.purpleTextDark),
         ),
         const SizedBox(
           height: 7,
@@ -24,7 +25,7 @@ Widget inviteFriends(BuildContext context) => Column(
                   left: 25,
                   top: 25,
                   child: Image.asset(
-                    'assets/images/invite_illustration.png',
+                    ImagePaths.inviteIlustration,
                     height: 110,
                   )),
               Positioned(
@@ -67,7 +68,7 @@ Widget _pill({required double width, required double height}) => Container(
       width: width,
       height: height,
       decoration: const BoxDecoration(
-          color: Palette.pill,
+          color: Palettes.pill,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.all(Radius.circular(400))),
     );

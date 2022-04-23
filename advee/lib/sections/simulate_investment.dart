@@ -1,14 +1,13 @@
+import 'package:advee/designs/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../theme/Palette.dart';
-
-Widget simulateInvestment(BuildContext context) => Container(
+Widget simulateInvestmentSection(BuildContext context) => Container(
       width: MediaQuery.of(context).size.width * 0.9,
       height: 111,
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Palette.blue),
+          color: Palettes.blue),
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           child: Column(

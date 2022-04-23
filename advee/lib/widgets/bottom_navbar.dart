@@ -1,4 +1,4 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,9 +13,9 @@ Widget bottomNavigationBar() => Container(
     ]),
     child: BottomNavigationBar(
         showUnselectedLabels: true,
-        unselectedItemColor: Palette.inactive,
+        unselectedItemColor: Palettes.inactive,
         unselectedFontSize: 9,
-        selectedItemColor: Palette.blue,
+        selectedItemColor: Palettes.blue,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w700),
         selectedFontSize: 9,
         items: [
@@ -37,12 +37,12 @@ BottomNavigationBarItem _item(
             child: SvgPicture.asset(
               svgPath,
               height: 25,
-              color: Palette.inactive,
+              color: Palettes.inactive,
             )),
         activeIcon: Padding(
             padding: const EdgeInsets.only(bottom: 7),
             child: SvgPicture.asset(
               svgPath,
               height: 25,
-              color: Palette.blue,
+              color: Palettes.blue,
             )));

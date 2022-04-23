@@ -1,8 +1,9 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/image_path.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:advee/widgets/card_body.dart';
 import 'package:flutter/material.dart';
 
-Widget investmentForYou(BuildContext context) => cardBody(
+Widget investmentForYouSection(BuildContext context) => cardBody(
     context: context,
     height: 220,
     title: 'Investment For You',
@@ -20,7 +21,7 @@ Widget investmentForYou(BuildContext context) => cardBody(
                     bottom: -5,
                     right: -25,
                     child: Image.asset(
-                      'assets/images/ciptadana_cash.png',
+                      ImagePaths.ciptadanaCash,
                       height: 110,
                     )),
                 sub1: '18% p.a.',
@@ -34,7 +35,7 @@ Widget investmentForYou(BuildContext context) => cardBody(
                     bottom: -5,
                     right: -15,
                     child: Image.asset(
-                      'assets/images/cimb_niaga.png',
+                      ImagePaths.cimbNiaga,
                       height: 110,
                     )),
                 sub1: '6.5% p.a.',
@@ -58,7 +59,7 @@ Widget _forYouCard({
           child: Container(
             width: 190,
             height: 120,
-            color: Palette.teal,
+            color: Palettes.teal,
             child: Stack(
               children: [
                 image,
@@ -112,7 +113,7 @@ Widget _forYouCard({
           style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
-              color: Palette.purpleTextDark),
+              color: Palettes.purpleTextDark),
         )
       ],
     );

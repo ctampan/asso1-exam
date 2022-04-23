@@ -1,9 +1,9 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/image_path.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:advee/widgets/stacked_card_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget recommendationWidget(BuildContext context) => Padding(
+Widget recommendationSection(BuildContext context) => Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Column(children: [
         stackedCardBody(
@@ -27,7 +27,7 @@ Widget recommendationWidget(BuildContext context) => Padding(
                     const SizedBox(
                       height: 20,
                     ),
-                    _buildClickableRecommendation()
+                    _clickableRecommendation()
                   ],
                 ),
               ),
@@ -35,7 +35,7 @@ Widget recommendationWidget(BuildContext context) => Padding(
                   bottom: 5,
                   right: 30,
                   child: Image.asset(
-                    'assets/images/invest_illustration.png',
+                    ImagePaths.investIllustration,
                     width: 110,
                   )),
             ],
@@ -51,7 +51,7 @@ Widget recommendationWidget(BuildContext context) => Padding(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                _circle3(7, Palette.blue),
+                _circle3(7, Palettes.blue),
                 const SizedBox(
                   width: 5,
                 ),
@@ -65,7 +65,7 @@ Widget _circle1(double size) => Container(
       width: size,
       height: size,
       decoration: BoxDecoration(
-          color: Palette.circle1,
+          color: Palettes.circle1,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
@@ -80,7 +80,7 @@ Widget _circle2(double size) => Container(
       width: size,
       height: size,
       decoration: BoxDecoration(
-          color: Palette.circle2,
+          color: Palettes.circle2,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
@@ -100,7 +100,7 @@ Widget _circle3(double size, Color color) => Container(
       ),
     );
 
-Widget _buildClickableRecommendation() => Material(
+Widget _clickableRecommendation() => Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: () {},

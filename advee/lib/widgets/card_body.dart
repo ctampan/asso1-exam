@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:flutter/material.dart';
-
-import '../theme/Palette.dart';
 
 Widget cardBody(
         {required BuildContext context,
@@ -34,7 +32,7 @@ Widget _cardHeader(
         Text(
           title,
           style: const TextStyle(
-              color: Palette.purpleText,
+              color: Palettes.purpleText,
               fontWeight: FontWeight.w700,
               fontSize: 13),
         ),
@@ -42,7 +40,7 @@ Widget _cardHeader(
         Text(
           detail,
           style: const TextStyle(
-              color: Palette.purpleTextDark,
+              color: Palettes.purpleTextDark,
               fontWeight: FontWeight.w700,
               fontSize: 13,
               height: 1.4),
@@ -53,7 +51,7 @@ Widget _cardHeader(
         const Icon(
           Icons.arrow_forward_ios,
           size: 13,
-          color: Palette.purpleTextDark,
+          color: Palettes.purpleTextDark,
         ),
         const SizedBox(
           width: 20,

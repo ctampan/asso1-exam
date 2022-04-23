@@ -1,8 +1,9 @@
-import 'package:advee/theme/palette.dart';
+import 'package:advee/designs/image_path.dart';
+import 'package:advee/designs/palette.dart';
 import 'package:advee/widgets/card_body.dart';
 import 'package:flutter/material.dart';
 
-Widget learnInvest(BuildContext context) => cardBody(
+Widget learnInvestSection(BuildContext context) => cardBody(
     context: context,
     height: 285,
     title: 'Learn How To Invest',
@@ -19,12 +20,12 @@ Widget learnInvest(BuildContext context) => cardBody(
                         bottom: 0,
                         right: -90,
                         child: Image.asset(
-                          'assets/images/coin_plant_original.jpg',
+                          ImagePaths.coinPlant,
                           colorBlendMode: BlendMode.multiply,
-                          color: Palette.blue,
+                          color: Palettes.blue,
                           height: 145,
                         )),
-                    color: Palette.blue,
+                    color: Palettes.blue,
                     text1: 'Investment',
                     text2: '101')),
             Padding(
@@ -34,12 +35,12 @@ Widget learnInvest(BuildContext context) => cardBody(
                         bottom: 10,
                         right: -35,
                         child: Image.asset(
-                          'assets/images/money.png',
+                          ImagePaths.money,
                           colorBlendMode: BlendMode.multiply,
-                          color: Palette.yellowDark,
+                          color: Palettes.yellowDark,
                           height: 70,
                         )),
-                    color: Palette.yellowDark,
+                    color: Palettes.yellowDark,
                     text1: 'How to',
                     text2: 'buy & sell')),
             Padding(
@@ -49,12 +50,12 @@ Widget learnInvest(BuildContext context) => cardBody(
                         bottom: 0,
                         right: -40,
                         child: Image.asset(
-                          'assets/images/shield.png',
+                          ImagePaths.shield,
                           colorBlendMode: BlendMode.multiply,
-                          color: Palette.orange,
+                          color: Palettes.orange,
                           height: 100,
                         )),
-                    color: Palette.orange,
+                    color: Palettes.orange,
                     text1: 'Protect',
                     text2: 'investment')),
           ],
@@ -109,7 +110,7 @@ Widget _learnCard(
           style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
-              color: Palette.purpleTextDark),
+              color: Palettes.purpleTextDark),
         )
       ],
     );
