@@ -1,5 +1,6 @@
 import 'package:advee/widgets/cash_investment.dart';
 import 'package:advee/widgets/investment_for_you.dart';
+import 'package:advee/widgets/invite_friends.dart';
 import 'package:advee/widgets/protection.dart';
 import 'package:advee/widgets/recommendation_widget.dart';
 import 'package:advee/widgets/simulate_investment.dart';
@@ -52,6 +53,10 @@ class HomePage extends StatelessWidget {
                 height: 15,
               ),
               recentTransaction(context),
+              const SizedBox(
+                height: 25,
+              ),
+              inviteFriends(context),
               const SizedBox(
                 height: 25,
               ),

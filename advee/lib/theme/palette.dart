@@ -20,4 +20,6 @@ class Palette {
 
   static const circle1 = Color(0xff367bec);
   static const circle2 = Color(0xff3f75eb);
+
+  static const pill = Color(0xff3e8ef5);
 }
