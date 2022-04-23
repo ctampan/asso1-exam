@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
               cashInvestmentSection(),
               simulateInvestmentSection(context),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               learnInvestSection(context),
               const SizedBox(

@@ -53,7 +53,7 @@ class _CashInvestmentState extends State<CashInvestment> {
   Widget build(BuildContext context) {
     return SizedBox(
         width: MediaQuery.of(context).size.width * 0.9,
-        height: 320 + _extraHeight,
+        height: 315 + _extraHeight,
         child: Stack(
           clipBehavior: Clip.hardEdge,
           children: [
