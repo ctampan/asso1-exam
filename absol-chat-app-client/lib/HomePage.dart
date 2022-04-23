@@ -122,10 +122,16 @@ class _HomeState extends State<HomePage> {
                                                 name: response.name,
                                                 roomId: response.roomId))
                                       },
-                                setState(() {
-                                  _randomButtonLoading = false;
-                                })
-                              });
+                                    setState(() {
+                                      _randomButtonLoading = false;
+                                    })
+                                  })
+                              .catchError((error) => {
+                                    errorAlert(context),
+                                    setState(() {
+                                      _randomButtonLoading = false;
+                                    })
+                                  });
                         },
                         child: _randomButtonLoading
                             ? const SpinKitRing(

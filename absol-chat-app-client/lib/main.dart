@@ -1,9 +1,14 @@
 import 'package:absol_chat_app_client/ChatPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'HomePage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
   runApp(const MyApp());
 }
 
