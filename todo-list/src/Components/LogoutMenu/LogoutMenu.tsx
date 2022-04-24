@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ButtonGroup, Dropdown } from "react-bootstrap";
 import { FaUser } from "react-icons/fa";
 import { connect } from "react-redux";
@@ -20,9 +20,16 @@ interface IProps {
 const LogoutMenu = ({ logOutConnect, username }: IProps) => {
   const navigate = useNavigate();
   const avatarRef = useRef<HTMLInputElement | null>(null);
-  const [avatar, setAvatar] = useState<string>(() => {
-    return getAvatar(username);
-  });
+  const [avatar, setAvatar] = useState<string>("");
+
+  useEffect(() => {
+    const avatarInitialLoad = async () => {
+      const avatarUrl = await getAvatar(username);
+      setAvatar(avatarUrl);
+    };
+
+    avatarInitialLoad();
+  }, []);
 
   const handleAvatarChange = (event: React.FormEvent<HTMLInputElement>) => {
     const image = event.currentTarget.files
