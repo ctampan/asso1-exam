@@ -41,6 +41,8 @@ const CreateNewTD = ({ username, refreshList, isComplete }: IProps) => {
         id="create-new-button"
         className={`${styles.createNewButton} transition-250ms`}
         onClick={() => {
+          setTitle("");
+          setContent("");
           setIsModalOpen(true);
         }}
       />

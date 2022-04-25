@@ -8,7 +8,7 @@ import '../widgets/button.dart';
 
 const _topupBillsList = [
   SquareItem(logoPath: ImagePaths.pulsa, name: 'Pulsa'),
-  SquareItem(logoPath: ImagePaths.pulsa, name: 'Paket Data'),
+  SquareItem(logoPath: ImagePaths.paketData, name: 'Paket Data'),
   SquareItem(logoPath: ImagePaths.listrik, name: 'PLN Prabayar'),
   SquareItem(logoPath: ImagePaths.bpjs, name: 'BPJS'),
   SquareItem(logoPath: ImagePaths.waterDrop, name: 'Air PDAM'),

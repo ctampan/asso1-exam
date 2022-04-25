@@ -31,7 +31,6 @@ function saveAvatar(username: string, avatar: File) {
 
       db.put(doc);
     }
-    localStorage.setItem("avatar:" + username, base64 as string);
   });
 }
 

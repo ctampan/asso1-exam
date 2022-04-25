@@ -40,17 +40,13 @@ function GetTodoList({ owner }: { owner: string }) {
 }
 
 function GetTodo({ id, owner }: { id: number; owner: string }) {
-  let todos: ITodoList[] = JSON.parse(
-    localStorage.getItem("todos:" + owner) ?? `[]`
-  );
+  let todos: ITodoList[] = GetTodoList({ owner });
 
   return todos.find((todo) => todo.id === id && todo.owner === sha256(owner));
 }
 
 function DeleteTodo({ id, owner }: { id: number; owner: string }) {
-  let todos: ITodoList[] = JSON.parse(
-    localStorage.getItem("todos:" + owner) ?? `[]`
-  );
+  let todos: ITodoList[] = GetTodoList({ owner });
 
   const todoIndex = todos.findIndex(
     (todo) => todo.id === id && todo.owner === sha256(owner)
